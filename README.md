@@ -55,8 +55,6 @@ intent.putExtra("palette_color_type", PaletteColorType.LIGHT_VIBRANT);
 startActivity(intent);
 ```
 
-
-
 ```xml
 
 <!-- Declare this activity in your AndroidManfest.xml -->
