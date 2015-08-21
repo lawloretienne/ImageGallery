@@ -72,14 +72,8 @@ public class ImageGalleryActivity extends AppCompatActivity {
             }
         }
 
-        mImageGalleryAdapter = new ImageGalleryAdapter(mImages, mPaletteColorType);
-        mViewPager.setAdapter(mImageGalleryAdapter);
-
-        if (mImages.size() > 1) {
-            setActionBarTitle(0);
-        }
-
-        mViewPager.addOnPageChangeListener(mViewPagerOnPageChangeListener);
+        setUpActionBarTitle();
+        setUpViewPager();
     }
     // endregion
 
@@ -111,6 +105,18 @@ public class ImageGalleryActivity extends AppCompatActivity {
     private void bindViews() {
         mViewPager = (ViewPager) findViewById(R.id.vp);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
+    }
+
+    private void setUpActionBarTitle(){
+        if (mImages.size() > 1) {
+            setActionBarTitle(0);
+        }
+    }
+
+    private void setUpViewPager(){
+        mImageGalleryAdapter = new ImageGalleryAdapter(mImages, mPaletteColorType);
+        mViewPager.setAdapter(mImageGalleryAdapter);
+        mViewPager.addOnPageChangeListener(mViewPagerOnPageChangeListener);
     }
     // endregion
 }
