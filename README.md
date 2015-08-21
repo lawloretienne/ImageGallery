@@ -13,7 +13,7 @@ Palette color types
  - LIGHT_MUTED
  - DARK_MUTED
 
- Supports pinch-to-zoom on the images
+Supports pinch-to-zoom on the images
 
 ![ImageGallery](https://raw.githubusercontent.com/lawloretienne/ImageGallery/master/images/ImageGallery_Screenshot.png)
 
