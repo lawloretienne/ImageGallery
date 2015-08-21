@@ -72,8 +72,8 @@ public class ImageGalleryActivity extends AppCompatActivity {
             }
         }
 
-        setUpActionBarTitle();
         setUpViewPager();
+        setUpActionBarTitle();
     }
     // endregion
 

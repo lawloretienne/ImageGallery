@@ -55,6 +55,18 @@ intent.putExtra("palette_color_type", PaletteColorType.LIGHT_VIBRANT);
 startActivity(intent);
 ```
 
+
+
+```xml
+
+<!-- Declare this activity in your AndroidManfest.xml -->
+<activity
+    android:name="com.etiennelawlor.imagegallery.library.activities.ImageGalleryActivity"
+    android:configChanges="orientation|keyboardHidden|screenSize"
+    android:label=""
+    android:theme="@style/ImageGalleryTheme" />
+```
+
 ## License
 
 ```
