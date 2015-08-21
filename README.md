@@ -3,7 +3,7 @@ A gallery used to host an array of images
 
 You can add one or more images to the gallery
 
-Support for using the Palette library to set the background color
+Support for using <a href="https://developer.android.com/intl/zh-cn/reference/android/support/v7/graphics/Palette.html">Palette</a> to set the background color
 
 Palette color types
  - VIBRANT
