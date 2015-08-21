@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.etiennelawlor.imagegallery.R;
 import com.etiennelawlor.imagegallery.library.activities.ImageGalleryActivity;
+import com.etiennelawlor.imagegallery.library.enums.PaletteColorType;
 
 import java.util.ArrayList;
 
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         images.add("http://i2.listal.com/image/413503/600full-petra-nemcova.jpg");
 
         intent.putStringArrayListExtra("images", images);
+        intent.putExtra("palette_color_type", PaletteColorType.LIGHT_VIBRANT);
 
         startActivity(intent);
     }

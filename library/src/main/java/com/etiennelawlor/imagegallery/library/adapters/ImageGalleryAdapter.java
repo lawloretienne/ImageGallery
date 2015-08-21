@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.etiennelawlor.imagegallery.library.R;
+import com.etiennelawlor.imagegallery.library.enums.PaletteColorType;
 import com.etiennelawlor.imagegallery.library.view.PaletteTransformation;
 import com.squareup.picasso.Picasso;
 
@@ -23,11 +24,13 @@ public class ImageGalleryAdapter extends PagerAdapter {
 
     // region Member Variables
     private List<String> mImages;
+    private PaletteColorType mPaletteColorType;
     // endregion
 
     // region Constructors
-    public ImageGalleryAdapter(List<String> images) {
+    public ImageGalleryAdapter(List<String> images, PaletteColorType paletteColorType) {
         mImages = images;
+        mPaletteColorType = paletteColorType;
     }
     // endregion
 
@@ -52,14 +55,34 @@ public class ImageGalleryAdapter extends PagerAdapter {
 
                     @Override
                     public void onSuccess(Palette palette) {
-                        int vibrant = palette.getVibrantColor(0x000000);
-                        int vibrantLight = palette.getLightVibrantColor(0x000000);
-                        int vibrantDark = palette.getDarkVibrantColor(0x000000);
-                        int muted = palette.getMutedColor(0x000000);
-                        int mutedLight = palette.getLightMutedColor(0x000000);
-                        int mutedDark = palette.getDarkMutedColor(0x000000);
 
-                        linearLayout.setBackgroundColor(vibrantLight);
+                        int bgColor = 0;
+                        if(mPaletteColorType != null){
+                            switch (mPaletteColorType){
+                                case VIBRANT:
+                                    bgColor = palette.getVibrantColor(0x000000);
+                                    break;
+                                case LIGHT_VIBRANT:
+                                    bgColor = palette.getLightVibrantColor(0x000000);
+                                    break;
+                                case DARK_VIBRANT:
+                                    bgColor = palette.getDarkVibrantColor(0x000000);
+                                    break;
+                                case MUTED:
+                                    bgColor = palette.getMutedColor(0x000000);
+                                    break;
+                                case LIGHT_MUTED:
+                                    bgColor = palette.getLightMutedColor(0x000000);
+                                    break;
+                                case DARK_MUTED:
+                                    bgColor = palette.getDarkMutedColor(0x000000);
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+
+                        linearLayout.setBackgroundColor(bgColor);
                     }
                 });
 

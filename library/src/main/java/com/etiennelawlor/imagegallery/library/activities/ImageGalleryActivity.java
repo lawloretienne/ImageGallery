@@ -10,6 +10,7 @@ import android.view.MenuItem;
 
 import com.etiennelawlor.imagegallery.library.R;
 import com.etiennelawlor.imagegallery.library.adapters.ImageGalleryAdapter;
+import com.etiennelawlor.imagegallery.library.enums.PaletteColorType;
 
 import java.util.List;
 
@@ -18,6 +19,7 @@ public class ImageGalleryActivity extends AppCompatActivity {
     // region Member Variables
     private ImageGalleryAdapter mImageGalleryAdapter;
     private List<String> mImages;
+    private PaletteColorType mPaletteColorType;
 
     private Toolbar mToolbar;
     private ViewPager mViewPager;
@@ -66,10 +68,11 @@ public class ImageGalleryActivity extends AppCompatActivity {
             Bundle extras = intent.getExtras();
             if (extras != null) {
                 mImages = extras.getStringArrayList("images");
+                mPaletteColorType = (PaletteColorType) extras.get("palette_color_type");
             }
         }
 
-        mImageGalleryAdapter = new ImageGalleryAdapter(mImages);
+        mImageGalleryAdapter = new ImageGalleryAdapter(mImages, mPaletteColorType);
         mViewPager.setAdapter(mImageGalleryAdapter);
 
         if (mImages.size() > 1) {

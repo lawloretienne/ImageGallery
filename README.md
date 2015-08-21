@@ -3,6 +3,16 @@ A gallery used to host an array of images
 
 You can add one or more images to the gallery
 
+Support for using the Palette library to set the background color
+
+Palette color types
+ - VIBRANT
+ - LIGHT_VIBRANT
+ - DARK_VIBRANT
+ - MUTED
+ - LIGHT_MUTED
+ - DARK_MUTED
+
 ![ImageGallery](https://raw.githubusercontent.com/lawloretienne/ImageGallery/master/images/ImageGallery_Screenshot.png)
 
 ## Setup
@@ -38,6 +48,7 @@ images.add("http://4.bp.blogspot.com/-tpbU39jdIWw/VTQ99D6FWvI/AAAAAAABzGM/pKWEKi
 images.add("http://i2.listal.com/image/413503/600full-petra-nemcova.jpg");
 
 intent.putStringArrayListExtra("images", images);
+intent.putExtra("palette_color_type", PaletteColorType.LIGHT_VIBRANT);
 
 startActivity(intent);
 ```
