@@ -1,4 +1,4 @@
-# ImageGallery
+# ImageGallery [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-ImageGallery-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/2364)
 A gallery used to host an array of images
 
 You can add one or more images to the gallery
