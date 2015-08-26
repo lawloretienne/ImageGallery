@@ -21,14 +21,14 @@ Supports pinch-to-zoom on the images
 
 #### Gradle
 
-`compile 'com.github.lawloretienne:imagegallery:0.0.4'`
+`compile 'com.github.lawloretienne:imagegallery:0.0.5'`
 
 #### Maven
 ```
 <dependency>
     <groupId>com.github.lawloretienne</groupId>
     <artifactId>imagegallery</artifactId>
-    <version>0.0.4</version>
+    <version>0.0.5</version>
 </dependency>
 ```
 

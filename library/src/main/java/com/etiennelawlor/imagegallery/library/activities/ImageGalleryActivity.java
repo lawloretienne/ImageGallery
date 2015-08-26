@@ -122,11 +122,9 @@ public class ImageGalleryActivity extends AppCompatActivity {
         int width = ImageGalleryUtils.getScreenWidth(this);
         int height = ImageGalleryUtils.getScreenHeight(this);
 
-        String dimens = String.format("w=%d&h=%d", width, height);
-        String xImageFormatter = "http://xi.mg/%s?%s";
-
         for(String image : mImages){
-            images.add(String.format(xImageFormatter, image, dimens));
+            String imageUrl = ImageGalleryUtils.getImageUrl(image, width, height);
+            images.add(imageUrl);
         }
 
         mImageGalleryAdapter = new ImageGalleryAdapter(images, mPaletteColorType);
