@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         images.add("http://i2.listal.com/image/413503/600full-petra-nemcova.jpg");
 
         intent.putStringArrayListExtra("images", images);
+        // optionally set background color using Palette
         intent.putExtra("palette_color_type", PaletteColorType.LIGHT_VIBRANT);
 
         startActivity(intent);

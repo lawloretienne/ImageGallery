@@ -21,14 +21,14 @@ Supports pinch-to-zoom on the images
 
 #### Gradle
 
-`compile 'com.github.lawloretienne:imagegallery:0.0.2'`
+`compile 'com.github.lawloretienne:imagegallery:0.0.3'`
 
 #### Maven
 ```
 <dependency>
     <groupId>com.github.lawloretienne</groupId>
     <artifactId>imagegallery</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.3</version>
 </dependency>
 ```
 
@@ -50,6 +50,7 @@ images.add("http://4.bp.blogspot.com/-tpbU39jdIWw/VTQ99D6FWvI/AAAAAAABzGM/pKWEKi
 images.add("http://i2.listal.com/image/413503/600full-petra-nemcova.jpg");
 
 intent.putStringArrayListExtra("images", images);
+// optionally set background color using Palette
 intent.putExtra("palette_color_type", PaletteColorType.LIGHT_VIBRANT);
 
 startActivity(intent);

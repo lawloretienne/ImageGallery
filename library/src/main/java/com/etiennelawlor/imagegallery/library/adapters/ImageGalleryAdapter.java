@@ -56,7 +56,7 @@ public class ImageGalleryAdapter extends PagerAdapter {
                     @Override
                     public void onSuccess(Palette palette) {
 
-                        int bgColor = 0;
+                        int bgColor = -1;
                         if(mPaletteColorType != null){
                             switch (mPaletteColorType){
                                 case VIBRANT:
@@ -82,7 +82,8 @@ public class ImageGalleryAdapter extends PagerAdapter {
                             }
                         }
 
-                        linearLayout.setBackgroundColor(bgColor);
+                        if(bgColor != -1)
+                            linearLayout.setBackgroundColor(bgColor);
                     }
                 });
 

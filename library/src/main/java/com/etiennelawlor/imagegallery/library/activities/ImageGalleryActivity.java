@@ -75,7 +75,6 @@ public class ImageGalleryActivity extends AppCompatActivity {
         setUpViewPager();
         setUpActionBarTitle();
     }
-    // endregion
 
     @Override
     protected void onDestroy() {
@@ -83,6 +82,7 @@ public class ImageGalleryActivity extends AppCompatActivity {
 
         mViewPager.removeOnPageChangeListener(mViewPagerOnPageChangeListener);
     }
+    // endregion
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
