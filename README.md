@@ -21,14 +21,14 @@ Supports pinch-to-zoom on the images
 
 #### Gradle
 
-`compile 'com.github.lawloretienne:imagegallery:0.0.3'`
+`compile 'com.github.lawloretienne:imagegallery:0.0.4'`
 
 #### Maven
 ```
 <dependency>
     <groupId>com.github.lawloretienne</groupId>
     <artifactId>imagegallery</artifactId>
-    <version>0.0.3</version>
+    <version>0.0.4</version>
 </dependency>
 ```
 
@@ -38,16 +38,17 @@ Supports pinch-to-zoom on the images
 Intent intent = new Intent(MainActivity.this, ImageGalleryActivity.class);
 
 ArrayList<String> images = new ArrayList<>();
-images.add("http://www.kirnak.com/wp-content/uploads/bikini_temptation_02.jpg");
-images.add("http://img1.efu.com.cn/upfile/fashion/photo/18381/426800.jpg");
-images.add("http://img1.efu.com.cn/upfile/fashion/photo/18381/426807.jpg");
-images.add("http://www.magxone.com/uploads/2009/10/Bar-Refaeli-Victorias-Secret-Swimsuit-3.jpg");
-images.add("http://i.dailymail.co.uk/i/pix/2015/02/03/254DF88F00000578-0-Gigi_Hadid_s_latest_campaign_images_for_Australian_swimwear_bran-m-96_1422981085166.jpg");
-images.add("http://cache.desktopnexus.com/thumbseg/1614/1614611-bigthumbnail.jpg");
-images.add("http://www.supermodelgirlfriend.com/wp-content/uploads/2015/01/nina-agdal-banana-moon-swimwear-black-bikini-supermodel-girlfriend-adam-dunlap.jpg");
-images.add("http://3.bp.blogspot.com/-k-qXckxTMVc/U1AY0EHG6GI/AAAAAAAAGpg/669lFJfmkbU/s1600/Bregje-Heinen-swimwear-03.jpg");
-images.add("http://4.bp.blogspot.com/-tpbU39jdIWw/VTQ99D6FWvI/AAAAAAABzGM/pKWEKiKXDvE/s1600/5_Zoe_PinkBridgestone_9489.jpg");
-images.add("http://i2.listal.com/image/413503/600full-petra-nemcova.jpg");
+
+images.add("https://images.unsplash.com/photo-1437422061949-f6efbde0a471?q=80&fm=jpg&s=e23055c9ba7686b8fe583fb8318a1f88");
+images.add("https://images.unsplash.com/photo-1434139240289-56c519f77cb0?q=80&fm=jpg&s=13f8a0d1c2f96b5f311dedeb17cddb60");
+images.add("https://images.unsplash.com/photo-1429152937938-07b5f2828cdd?q=80&fm=jpg&s=a4f424db0ae5a398297df5ae5e0520d6");
+images.add("https://images.unsplash.com/photo-1430866880825-336a7d7814eb?q=80&fm=jpg&s=450de8563ac041f48b1563b499f56895");
+images.add("https://images.unsplash.com/photo-1429547584745-d8bec594c82e?q=80&fm=jpg&s=e9a7d9973088122a3e453cb2af541201");
+images.add("https://images.unsplash.com/photo-1429277158984-614d155e0017?q=80&fm=jpg&s=138f154e17a304b296c953323862633b");
+images.add("https://images.unsplash.com/photo-1429042007245-890c9e2603af?q=80&fm=jpg&s=8b76d20174cf46bffe32ea18f05551d3");
+images.add("https://images.unsplash.com/photo-1429091967365-492aaa5accfe?q=80&fm=jpg&s=b7430cfe5508430aea39fcf3b0645878");
+images.add("https://images.unsplash.com/photo-1430132594682-16e1185b17c5?q=80&fm=jpg&s=a70abbfff85382d11b03b9bbc71649c3");
+images.add("https://images.unsplash.com/photo-1436891620584-47fd0e565afb?q=80&fm=jpg&s=33cf5b0ee9fbd292475a0c03bee481c9");
 
 intent.putStringArrayListExtra("images", images);
 // optionally set background color using Palette

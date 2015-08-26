@@ -6,12 +6,15 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.etiennelawlor.imagegallery.library.R;
 import com.etiennelawlor.imagegallery.library.adapters.ImageGalleryAdapter;
 import com.etiennelawlor.imagegallery.library.enums.PaletteColorType;
+import com.etiennelawlor.imagegallery.library.util.ImageGalleryUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ImageGalleryActivity extends AppCompatActivity {
@@ -114,7 +117,19 @@ public class ImageGalleryActivity extends AppCompatActivity {
     }
 
     private void setUpViewPager(){
-        mImageGalleryAdapter = new ImageGalleryAdapter(mImages, mPaletteColorType);
+        ArrayList<String> images = new ArrayList<>();
+
+        int width = ImageGalleryUtils.getScreenWidth(this);
+        int height = ImageGalleryUtils.getScreenHeight(this);
+
+        String dimens = String.format("w=%d&h=%d", width, height);
+        String xImageFormatter = "http://xi.mg/%s?%s";
+
+        for(String image : mImages){
+            images.add(String.format(xImageFormatter, image, dimens));
+        }
+
+        mImageGalleryAdapter = new ImageGalleryAdapter(images, mPaletteColorType);
         mViewPager.setAdapter(mImageGalleryAdapter);
         mViewPager.addOnPageChangeListener(mViewPagerOnPageChangeListener);
     }
