@@ -15,7 +15,7 @@ Palette color types
 
 Supports pinch-to-zoom on the images
 
-Uses <a href="xi.mg">XImage</a> to resize large images like those seen on <a href="images.unsplash.com">Unsplash</a>
+Uses <a href="http://xi.mg">XImage</a> to resize large images like those seen on <a href="http://images.unsplash.com">Unsplash</a>
 
 ![ImageGallery](https://raw.githubusercontent.com/lawloretienne/ImageGallery/master/images/ImageGallery_Screenshot2.png)
 
