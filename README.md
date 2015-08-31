@@ -17,20 +17,22 @@ Supports pinch-to-zoom on the images
 
 Uses <a href="http://xi.mg">XImage</a> to resize large images like those seen on <a href="https://unsplash.com/">Unsplash</a>
 
-![ImageGallery](https://raw.githubusercontent.com/lawloretienne/ImageGallery/master/images/ImageGallery_Screenshot2.png)
+![ImageGallery](https://raw.githubusercontent.com/lawloretienne/ImageGallery/master/images/ImageGallery_Screenshot3.png)
+
+![ImageGallery](https://raw.githubusercontent.com/lawloretienne/ImageGallery/master/images/ImageGallery_Screenshot4.png)
 
 ## Setup
 
 #### Gradle
 
-`compile 'com.github.lawloretienne:imagegallery:0.0.5'`
+`compile 'com.github.lawloretienne:imagegallery:0.0.6'`
 
 #### Maven
 ```
 <dependency>
     <groupId>com.github.lawloretienne</groupId>
     <artifactId>imagegallery</artifactId>
-    <version>0.0.5</version>
+    <version>0.0.6</version>
 </dependency>
 ```
 
@@ -54,7 +56,7 @@ images.add("https://images.unsplash.com/photo-1436891620584-47fd0e565afb?q=80&fm
 
 intent.putStringArrayListExtra("images", images);
 // optionally set background color using Palette
-intent.putExtra("palette_color_type", PaletteColorType.LIGHT_VIBRANT);
+intent.putExtra("palette_color_type", PaletteColorType.VIBRANT);
 
 startActivity(intent);
 ```

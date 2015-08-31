@@ -2,11 +2,15 @@ package com.etiennelawlor.imagegallery.library.util;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.graphics.Point;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.WindowManager;
 
 import java.util.Set;
 
@@ -27,7 +31,25 @@ public class ImageGalleryUtils {
         return size.y;
     }
 
-    public static String getImageUrl(@Nullable String url, int width, int height) {
+    public static boolean isInLandscapeMode(@NonNull Context context) {
+        boolean isLandscape = false;
+        if (context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            isLandscape = true;
+        }
+        return isLandscape;
+    }
+
+    public static int dp2px(Context context, int dp) {
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        Display display = wm.getDefaultDisplay();
+
+        DisplayMetrics displaymetrics = new DisplayMetrics();
+        display.getMetrics(displaymetrics);
+
+        return (int) (dp * displaymetrics.density + 0.5f);
+    }
+
+    public static String getFormattedImageUrl(@Nullable String url, int width, int height) {
         if (!TextUtils.isEmpty(url)) {
 
             Uri uri = Uri.parse(url);
@@ -75,6 +97,7 @@ public class ImageGalleryUtils {
 
             String formattedUrl = String.format("http://xi.mg/%s", builder.build().toString());
             formattedUrl = formattedUrl.replace(" ", "%20");
+            formattedUrl = formattedUrl.replace("%2520", "%20");
 
             return formattedUrl;
         }

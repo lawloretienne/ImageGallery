@@ -1,13 +1,18 @@
 package com.etiennelawlor.imagegallery.library.activities;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.etiennelawlor.imagegallery.library.R;
 import com.etiennelawlor.imagegallery.library.adapters.ImageGalleryAdapter;
@@ -17,38 +22,15 @@ import com.etiennelawlor.imagegallery.library.util.ImageGalleryUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ImageGalleryActivity extends AppCompatActivity {
+public class ImageGalleryActivity extends AppCompatActivity implements ImageGalleryAdapter.OnImageClickListener {
 
     // region Member Variables
-    private ImageGalleryAdapter mImageGalleryAdapter;
-    private List<String> mImages;
+    private ArrayList<String> mImages;
     private PaletteColorType mPaletteColorType;
+    private ImageGalleryAdapter mImageGalleryAdapter;
 
     private Toolbar mToolbar;
-    private ViewPager mViewPager;
-    // endregion
-
-    // region Listeners
-    private ViewPager.OnPageChangeListener mViewPagerOnPageChangeListener = new ViewPager.OnPageChangeListener() {
-        @Override
-        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-        }
-
-        @Override
-        public void onPageSelected(int position) {
-            if (mViewPager != null) {
-                mViewPager.setCurrentItem(position);
-
-                setActionBarTitle(position);
-            }
-        }
-
-        @Override
-        public void onPageScrollStateChanged(int state) {
-
-        }
-    };
+    private RecyclerView mRecyclerView;
     // endregion
 
     // region Lifecycle Methods
@@ -75,15 +57,7 @@ public class ImageGalleryActivity extends AppCompatActivity {
             }
         }
 
-        setUpViewPager();
-        setUpActionBarTitle();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-
-        mViewPager.removeOnPageChangeListener(mViewPagerOnPageChangeListener);
+        setUpRecyclerView();
     }
     // endregion
 
@@ -97,39 +71,46 @@ public class ImageGalleryActivity extends AppCompatActivity {
         }
     }
 
-    // region Helper Methods
-    private void setActionBarTitle(int position) {
-        if (mViewPager != null) {
-            int totalPages = mViewPager.getAdapter().getCount();
-            getSupportActionBar().setTitle(String.format("%d of %d", (position + 1), totalPages));
-        }
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        setUpRecyclerView();
     }
 
+    // region ImageGalleryAdapter.OnImageClickListener Methods
+    @Override
+    public void onImageClick(View view, int position) {
+        Intent intent = new Intent(ImageGalleryActivity.this, FullScreenImageGalleryActivity.class);
+
+        intent.putStringArrayListExtra("images", mImages);
+        intent.putExtra("position", position);
+        if(mPaletteColorType != null){
+            intent.putExtra("palette_color_type", mPaletteColorType);
+        }
+
+        startActivity(intent);
+    }
+    // endregion
+
+    // region Helper Methods
     private void bindViews() {
-        mViewPager = (ViewPager) findViewById(R.id.vp);
+        mRecyclerView = (RecyclerView) findViewById(R.id.rv);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
     }
 
-    private void setUpActionBarTitle(){
-        if (mImages.size() > 1) {
-            setActionBarTitle(0);
-        }
-    }
-
-    private void setUpViewPager(){
-        ArrayList<String> images = new ArrayList<>();
-
-        int width = ImageGalleryUtils.getScreenWidth(this);
-        int height = ImageGalleryUtils.getScreenHeight(this);
-
-        for(String image : mImages){
-            String imageUrl = ImageGalleryUtils.getImageUrl(image, width, height);
-            images.add(imageUrl);
+    private void setUpRecyclerView(){
+        int numOfColumns;
+        if(ImageGalleryUtils.isInLandscapeMode(this)){
+            numOfColumns = 4;
+        } else {
+            numOfColumns = 3;
         }
 
-        mImageGalleryAdapter = new ImageGalleryAdapter(images, mPaletteColorType);
-        mViewPager.setAdapter(mImageGalleryAdapter);
-        mViewPager.addOnPageChangeListener(mViewPagerOnPageChangeListener);
+        mRecyclerView.setLayoutManager(new GridLayoutManager(ImageGalleryActivity.this, numOfColumns));
+        mImageGalleryAdapter = new ImageGalleryAdapter(mImages);
+        mImageGalleryAdapter.setOnImageClickListener(this);
+
+        mRecyclerView.setAdapter(mImageGalleryAdapter);
     }
     // endregion
 }
