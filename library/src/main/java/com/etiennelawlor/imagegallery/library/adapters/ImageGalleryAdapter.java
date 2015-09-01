@@ -1,6 +1,7 @@
 package com.etiennelawlor.imagegallery.library.adapters;
 
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -55,9 +56,13 @@ public class ImageGalleryAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         String image = mImages.get(position);
         String formattedImageUrl = ImageGalleryUtils.getFormattedImageUrl(image, mGridItemWidth, mGridItemHeight);
 
-        Picasso.with(holder.mImageView.getContext())
-                .load(formattedImageUrl)
-                .into(holder.mImageView);
+        if(!TextUtils.isEmpty(formattedImageUrl)){
+            Picasso.with(holder.mImageView.getContext())
+                    .load(formattedImageUrl)
+                    .into(holder.mImageView);
+        } else {
+            holder.mImageView.setImageDrawable(null);
+        }
     }
 
     @Override

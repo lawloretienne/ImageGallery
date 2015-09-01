@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.graphics.Palette;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,22 +46,29 @@ public class FullScreenImageGalleryAdapter extends PagerAdapter {
         ImageView imageView = (ImageView) view.findViewById(R.id.iv);
         final LinearLayout linearLayout = (LinearLayout) view.findViewById(R.id.ll);
 
-        Picasso.with(imageView.getContext())
-                .load(mImages.get(position))
-                .transform(PaletteTransformation.instance())
-                .into(imageView, new PaletteTransformation.PaletteCallback(imageView) {
-                    @Override
-                    public void onError() {
+        String image = mImages.get(position);
 
-                    }
+        if(!TextUtils.isEmpty(image)){
+            Picasso.with(imageView.getContext())
+                    .load(image)
+                    .transform(PaletteTransformation.instance())
+                    .into(imageView, new PaletteTransformation.PaletteCallback(imageView) {
+                        @Override
+                        public void onError() {
 
-                    @Override
-                    public void onSuccess(Palette palette) {
-                        int bgColor = getBackgroundColor(palette);
-                        if(bgColor != -1)
-                            linearLayout.setBackgroundColor(bgColor);
-                    }
-                });
+                        }
+
+                        @Override
+                        public void onSuccess(Palette palette) {
+                            int bgColor = getBackgroundColor(palette);
+                            if(bgColor != -1)
+                                linearLayout.setBackgroundColor(bgColor);
+                        }
+                    });
+        } else {
+            imageView.setImageDrawable(null);
+        }
+
 
         ((ViewPager) container).addView(view, 0);
 
