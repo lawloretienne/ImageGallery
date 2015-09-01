@@ -25,14 +25,14 @@ Uses <a href="http://xi.mg">XImage</a> to resize large images like those seen on
 
 #### Gradle
 
-`compile 'com.github.lawloretienne:imagegallery:0.0.6'`
+`compile 'com.github.lawloretienne:imagegallery:0.0.7'`
 
 #### Maven
 ```
 <dependency>
     <groupId>com.github.lawloretienne</groupId>
     <artifactId>imagegallery</artifactId>
-    <version>0.0.6</version>
+    <version>0.0.7</version>
 </dependency>
 ```
 
