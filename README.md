@@ -71,6 +71,12 @@ startActivity(intent);
     android:theme="@style/ImageGalleryTheme" />
 ```
 
+## Projects/Apps using ImageGallery
+
+- <a href="https://play.google.com/store/apps/details?id=com.biggu.shopsavvy&hl=en">ShopSavvy</a>
+
+Feel free to contact me to add yours to this list.
+
 ## License
 
 ```
