@@ -18,6 +18,7 @@ import com.etiennelawlor.imagegallery.library.R;
 import com.etiennelawlor.imagegallery.library.adapters.ImageGalleryAdapter;
 import com.etiennelawlor.imagegallery.library.enums.PaletteColorType;
 import com.etiennelawlor.imagegallery.library.util.ImageGalleryUtils;
+import com.etiennelawlor.imagegallery.library.view.GridSpacesItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -107,6 +108,7 @@ public class ImageGalleryActivity extends AppCompatActivity implements ImageGall
         }
 
         mRecyclerView.setLayoutManager(new GridLayoutManager(ImageGalleryActivity.this, numOfColumns));
+        mRecyclerView.addItemDecoration(new GridSpacesItemDecoration(ImageGalleryUtils.dp2px(this, 2), numOfColumns));
         mImageGalleryAdapter = new ImageGalleryAdapter(mImages);
         mImageGalleryAdapter.setOnImageClickListener(this);
 
