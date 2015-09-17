@@ -17,7 +17,7 @@ Supports pinch-to-zoom on the images
 
 Uses <a href="http://xi.mg">XImage</a> to resize large images like those seen on <a href="https://unsplash.com/">Unsplash</a>
 
-![ImageGallery](https://raw.githubusercontent.com/lawloretienne/ImageGallery/master/images/ImageGallery_Screenshot3.png)
+![ImageGallery](https://raw.githubusercontent.com/lawloretienne/ImageGallery/master/images/ImageGallery_Screenshot5.png)
 
 ![ImageGallery](https://raw.githubusercontent.com/lawloretienne/ImageGallery/master/images/ImageGallery_Screenshot4.png)
 
@@ -25,14 +25,14 @@ Uses <a href="http://xi.mg">XImage</a> to resize large images like those seen on
 
 #### Gradle
 
-`compile 'com.github.lawloretienne:imagegallery:0.0.7'`
+`compile 'com.github.lawloretienne:imagegallery:0.0.8'`
 
 #### Maven
 ```
 <dependency>
     <groupId>com.github.lawloretienne</groupId>
     <artifactId>imagegallery</artifactId>
-    <version>0.0.7</version>
+    <version>0.0.8</version>
 </dependency>
 ```
 
