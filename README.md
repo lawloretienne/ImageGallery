@@ -17,7 +17,7 @@ Supports pinch-to-zoom on the images
 
 Uses <a href="http://xi.mg">XImage</a> to resize large images like those seen on <a href="https://unsplash.com/">Unsplash</a>
 
-![ImageGallery](https://raw.githubusercontent.com/lawloretienne/ImageGallery/master/images/ImageGallery_Screenshot5.png)
+![ImageGallery](https://raw.githubusercontent.com/lawloretienne/ImageGallery/master/images/ImageGallery_Screenshot6.png)
 
 ![ImageGallery](https://raw.githubusercontent.com/lawloretienne/ImageGallery/master/images/ImageGallery_Screenshot4.png)
 
