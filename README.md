@@ -71,14 +71,6 @@ startActivity(intent);
     android:theme="@style/ImageGalleryTheme" />
 ```
 
-## Notes
-
-If you are populating your image gallery with image urls be sure to include 
-
-`<uses-permission android:name="android.permission.INTERNET"/>`
-
-in your `AndroidManifest.xml` as the images will be downloaded over the network.
-
 ## Developed By
 
 * Etienne Lawlor 
