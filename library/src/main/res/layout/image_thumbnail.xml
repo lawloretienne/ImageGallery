@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
+        android:contentDescription="@string/content_description"
         android:background="@color/grey_800"/>
 
 </FrameLayout>

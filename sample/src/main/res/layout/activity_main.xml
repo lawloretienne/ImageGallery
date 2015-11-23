@@ -8,6 +8,6 @@
         android:id="@+id/view_gallery_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="View Gallery"/>
+        android:text="@string/view_gallery"/>
 
 </LinearLayout>

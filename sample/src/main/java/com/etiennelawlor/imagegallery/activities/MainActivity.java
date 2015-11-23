@@ -3,13 +3,11 @@ package com.etiennelawlor.imagegallery.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 
 import com.etiennelawlor.imagegallery.R;
 import com.etiennelawlor.imagegallery.library.activities.ImageGalleryActivity;
 import com.etiennelawlor.imagegallery.library.enums.PaletteColorType;
-import com.etiennelawlor.imagegallery.library.util.ImageGalleryUtils;
 
 import java.util.ArrayList;
 
@@ -23,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     // region Listeners
     @OnClick(R.id.view_gallery_btn)
-    public void onViewGalleryButtonClicked(final View v) {
+    public void onViewGalleryButtonClicked() {
         Intent intent = new Intent(MainActivity.this, ImageGalleryActivity.class);
 
         ArrayList<String> images = new ArrayList<>();
@@ -75,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
     }
     // endregion
 }

@@ -2,7 +2,6 @@ package com.etiennelawlor.imagegallery.library.view;
 
 import android.graphics.Rect;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 
 /**
@@ -11,8 +10,8 @@ import android.view.View;
 public class GridSpacesItemDecoration extends RecyclerView.ItemDecoration {
 
     // region Member Variables
-    private int mSpace;
-    private int mNumOfColumns;
+    private final int mSpace;
+    private final int mNumOfColumns;
     // endregion
 
     // region Constructors

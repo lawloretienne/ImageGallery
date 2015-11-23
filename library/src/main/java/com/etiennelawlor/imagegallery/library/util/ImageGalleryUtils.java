@@ -76,14 +76,18 @@ public class ImageGalleryUtils {
             }
 
             for (String key : queryParameterNames) {
-                if(key.equals("w")){
-                    builder.appendQueryParameter(key, String.valueOf(width));
-                    isWidthSet = true;
-                } else if (key.equals("h")){
-                    builder.appendQueryParameter(key, String.valueOf(height));
-                    isHeightSet = true;
-                } else {
-                    builder.appendQueryParameter(key, uri.getQueryParameter(key));
+                switch (key) {
+                    case "w":
+                        builder.appendQueryParameter(key, String.valueOf(width));
+                        isWidthSet = true;
+                        break;
+                    case "h":
+                        builder.appendQueryParameter(key, String.valueOf(height));
+                        isHeightSet = true;
+                        break;
+                    default:
+                        builder.appendQueryParameter(key, uri.getQueryParameter(key));
+                        break;
                 }
             }
 

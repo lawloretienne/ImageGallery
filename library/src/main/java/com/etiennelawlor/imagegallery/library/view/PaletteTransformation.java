@@ -5,9 +5,7 @@ package com.etiennelawlor.imagegallery.library.view;
  */
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
-import android.support.v4.util.Pools;
 import android.support.v7.graphics.Palette;
 import android.widget.ImageView;
 
@@ -25,7 +23,7 @@ import java.util.WeakHashMap;
  */
 public final class PaletteTransformation implements Transformation {
     private static final PaletteTransformation INSTANCE = new PaletteTransformation();
-    private static final Map<Bitmap, Palette> CACHE = new WeakHashMap<Bitmap, Palette>();
+    private static final Map<Bitmap, Palette> CACHE = new WeakHashMap<>();
 
     /**
      * A {@link Target} that receives {@link Palette} information in its callback.
@@ -54,10 +52,10 @@ public final class PaletteTransformation implements Transformation {
      * @see Callback
      */
     public static abstract class PaletteCallback implements Callback {
-        private WeakReference<ImageView> mImageView;
+        private final WeakReference<ImageView> mImageView;
 
         public PaletteCallback(@NonNull ImageView imageView) {
-            mImageView = new WeakReference<ImageView>(imageView);
+            mImageView = new WeakReference<>(imageView);
         }
 
         protected abstract void onSuccess(Palette palette);

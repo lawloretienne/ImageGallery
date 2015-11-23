@@ -25,14 +25,14 @@ Uses <a href="http://xi.mg">XImage</a> to resize large images like those seen on
 
 #### Gradle
 
-`compile 'com.github.lawloretienne:imagegallery:0.0.9'`
+`compile 'com.github.lawloretienne:imagegallery:0.0.10'`
 
 #### Maven
 ```
 <dependency>
     <groupId>com.github.lawloretienne</groupId>
     <artifactId>imagegallery</artifactId>
-    <version>0.0.9</version>
+    <version>0.0.10</version>
 </dependency>
 ```
 
@@ -70,14 +70,6 @@ startActivity(intent);
     android:label=""
     android:theme="@style/ImageGalleryTheme" />
 ```
-
-## Notes
-
-If you are populating your image gallery with image urls be sure to include 
-
-`<uses-permission android:name="android.permission.INTERNET"/>`
-
-in your `AndroidManifest.xml` as the images will be downloaded over the network.
 
 ## Developed By
 

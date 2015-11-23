@@ -18,8 +18,6 @@ import java.util.List;
 
 public class FullScreenImageGalleryActivity extends AppCompatActivity {
 
-    // region Member Variables
-    private FullScreenImageGalleryAdapter mFullScreenImageGalleryAdapter;
     private List<String> mImages;
     private int mPosition;
     private PaletteColorType mPaletteColorType;
@@ -29,7 +27,7 @@ public class FullScreenImageGalleryActivity extends AppCompatActivity {
     // endregion
 
     // region Listeners
-    private ViewPager.OnPageChangeListener mViewPagerOnPageChangeListener = new ViewPager.OnPageChangeListener() {
+    private final ViewPager.OnPageChangeListener mViewPagerOnPageChangeListener = new ViewPager.OnPageChangeListener() {
         @Override
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
@@ -82,7 +80,7 @@ public class FullScreenImageGalleryActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mViewPager.removeOnPageChangeListener(mViewPagerOnPageChangeListener);
+        removeListeners();
     }
     // endregion
 
@@ -102,19 +100,19 @@ public class FullScreenImageGalleryActivity extends AppCompatActivity {
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
     }
 
-    private void setUpViewPager(){
+    private void setUpViewPager() {
         ArrayList<String> images = new ArrayList<>();
 
         int width = ImageGalleryUtils.getScreenWidth(this);
         int height = ImageGalleryUtils.getScreenHeight(this);
 
-        for(String image : mImages){
+        for (String image : mImages) {
             String imageUrl = ImageGalleryUtils.getFormattedImageUrl(image, width, height);
             images.add(imageUrl);
         }
 
-        mFullScreenImageGalleryAdapter = new FullScreenImageGalleryAdapter(images, mPaletteColorType);
-        mViewPager.setAdapter(mFullScreenImageGalleryAdapter);
+        FullScreenImageGalleryAdapter fullScreenImageGalleryAdapter = new FullScreenImageGalleryAdapter(images, mPaletteColorType);
+        mViewPager.setAdapter(fullScreenImageGalleryAdapter);
         mViewPager.addOnPageChangeListener(mViewPagerOnPageChangeListener);
         mViewPager.setCurrentItem(mPosition);
 
@@ -124,8 +122,16 @@ public class FullScreenImageGalleryActivity extends AppCompatActivity {
     private void setActionBarTitle(int position) {
         if (mViewPager != null && mImages.size() > 1) {
             int totalPages = mViewPager.getAdapter().getCount();
-            getSupportActionBar().setTitle(String.format("%d of %d", (position + 1), totalPages));
+
+            ActionBar actionBar = getSupportActionBar();
+            if(actionBar != null){
+                actionBar.setTitle(String.format("%d of %d", (position + 1), totalPages));
+            }
         }
+    }
+
+    private void removeListeners() {
+        mViewPager.removeOnPageChangeListener(mViewPagerOnPageChangeListener);
     }
     // endregion
 }

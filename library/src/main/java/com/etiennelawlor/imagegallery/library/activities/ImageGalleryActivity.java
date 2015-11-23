@@ -3,14 +3,11 @@ package com.etiennelawlor.imagegallery.library.activities;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -21,14 +18,12 @@ import com.etiennelawlor.imagegallery.library.util.ImageGalleryUtils;
 import com.etiennelawlor.imagegallery.library.view.GridSpacesItemDecoration;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ImageGalleryActivity extends AppCompatActivity implements ImageGalleryAdapter.OnImageClickListener {
 
     // region Member Variables
     private ArrayList<String> mImages;
     private PaletteColorType mPaletteColorType;
-    private ImageGalleryAdapter mImageGalleryAdapter;
 
     private Toolbar mToolbar;
     private RecyclerView mRecyclerView;
@@ -80,7 +75,7 @@ public class ImageGalleryActivity extends AppCompatActivity implements ImageGall
 
     // region ImageGalleryAdapter.OnImageClickListener Methods
     @Override
-    public void onImageClick(View view, int position) {
+    public void onImageClick(int position) {
         Intent intent = new Intent(ImageGalleryActivity.this, FullScreenImageGalleryActivity.class);
 
         intent.putStringArrayListExtra("images", mImages);
@@ -109,10 +104,10 @@ public class ImageGalleryActivity extends AppCompatActivity implements ImageGall
 
         mRecyclerView.setLayoutManager(new GridLayoutManager(ImageGalleryActivity.this, numOfColumns));
         mRecyclerView.addItemDecoration(new GridSpacesItemDecoration(ImageGalleryUtils.dp2px(this, 2), numOfColumns));
-        mImageGalleryAdapter = new ImageGalleryAdapter(mImages);
-        mImageGalleryAdapter.setOnImageClickListener(this);
+        ImageGalleryAdapter imageGalleryAdapter = new ImageGalleryAdapter(mImages);
+        imageGalleryAdapter.setOnImageClickListener(this);
 
-        mRecyclerView.setAdapter(mImageGalleryAdapter);
+        mRecyclerView.setAdapter(imageGalleryAdapter);
     }
     // endregion
 }
