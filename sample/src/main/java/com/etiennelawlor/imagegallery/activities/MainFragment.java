@@ -1,29 +1,40 @@
 package com.etiennelawlor.imagegallery.activities;
 
-import android.content.Intent;
+import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import com.etiennelawlor.imagegallery.R;
-import com.etiennelawlor.imagegallery.library.activities.ImageGalleryActivity;
 import com.etiennelawlor.imagegallery.library.enums.PaletteColorType;
+import com.etiennelawlor.imagegallery.library.fragments.ImageGalleryFragment;
 
 import java.util.ArrayList;
 
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
 /**
- * Created by etiennelawlor on 8/20/15.
+ * Created by ayo on 26.11.15.
  */
-public class MainActivity extends AppCompatActivity {
+public class MainFragment extends AppCompatActivity {
 
-    // region Listeners
-    @OnClick(R.id.view_gallery_btn)
-    public void onViewGalleryButtonClicked() {
-        Intent intent = new Intent(MainActivity.this, ImageGalleryActivity.class);
+    private Toolbar mToolbar;
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.fragment_main);
+
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null)
+            actionBar.setDisplayHomeAsUpEnabled(true);
+
+        changeFragment(ImageGalleryFragment.getInstance(getPictures(), PaletteColorType.VIBRANT));
+    }
+
+    public ArrayList<String> getPictures(){
         ArrayList<String> images = new ArrayList<>();
 
         images.add("https://images.unsplash.com/photo-1437422061949-f6efbde0a471?q=80&fm=jpg&s=e23055c9ba7686b8fe583fb8318a1f88");
@@ -59,26 +70,20 @@ public class MainActivity extends AppCompatActivity {
         images.add("https://images.unsplash.com/44/MIbCzcvxQdahamZSNQ26_12082014-IMG_3526.jpg?q=80&fm=jpg&s=9f2b7926c5c13f719c57536392d78b49");
         images.add("https://images.unsplash.com/photo-1415226556993-1404e0c6e727?q=80&fm=jpg&s=334b8b5271cdbd8cbd4990a3aef89074");
 
-        intent.putStringArrayListExtra("images", images);
-        // optionally set background color using Palette
-        intent.putExtra("palette_color_type", PaletteColorType.VIBRANT);
-
-        startActivity(intent);
+        return images;
     }
 
-    @OnClick(R.id.button_gallery_fragment)
-    public void onViewFragmentGalleryClicked(){
-        startActivity(new Intent(this, MainFragment.class));
-    }
-    // endregion
-
-    // region Lifecycle Methods
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
+        } else {
+            return super.onOptionsItemSelected(item);
+        }
     }
-    // endregion
+
+    private void changeFragment(Fragment fragment){
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment).commit();
+    }
 }

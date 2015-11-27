@@ -10,4 +10,10 @@
         android:layout_height="wrap_content"
         android:text="@string/view_gallery"/>
 
+    <Button
+        android:id="@+id/button_gallery_fragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/view_gallery_fragment"/>
+
 </LinearLayout>
