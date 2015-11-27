@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import com.etiennelawlor.imagegallery.R;
 import com.etiennelawlor.imagegallery.library.enums.PaletteColorType;
@@ -18,7 +19,7 @@ import java.util.ArrayList;
  */
 public class MainFragment extends AppCompatActivity {
 
-    private Toolbar mToolbar;
+    protected Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,10 +27,10 @@ public class MainFragment extends AppCompatActivity {
         setContentView(R.layout.fragment_main);
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
+
         setSupportActionBar(mToolbar);
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null)
-            actionBar.setDisplayHomeAsUpEnabled(true);
+        if (getSupportActionBar() != null)
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         changeFragment(ImageGalleryFragment.getInstance(getPictures(), PaletteColorType.VIBRANT));
     }
@@ -84,6 +85,6 @@ public class MainFragment extends AppCompatActivity {
     }
 
     private void changeFragment(Fragment fragment){
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment).addToBackStack("").commit();
     }
 }

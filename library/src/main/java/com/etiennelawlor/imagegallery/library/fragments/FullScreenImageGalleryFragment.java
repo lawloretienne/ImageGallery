@@ -8,6 +8,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -62,6 +63,7 @@ public class FullScreenImageGalleryFragment extends Fragment{
         public void onPageSelected(int position) {
             if (mViewPager != null) {
                 mViewPager.setCurrentItem(position);
+
                 setActionBarTitle(position);
             }
         }
@@ -81,6 +83,7 @@ public class FullScreenImageGalleryFragment extends Fragment{
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
+
             getActivity().onBackPressed();
             return true;
         } else {
@@ -104,8 +107,6 @@ public class FullScreenImageGalleryFragment extends Fragment{
         mViewPager.setAdapter(fullScreenImageGalleryAdapter);
         mViewPager.addOnPageChangeListener(mViewPagerOnPageChangeListener);
         mViewPager.setCurrentItem(mPosition);
-
-        setActionBarTitle(mPosition);
     }
 
     private void setActionBarTitle(int position) {
@@ -113,9 +114,8 @@ public class FullScreenImageGalleryFragment extends Fragment{
             int totalPages = mViewPager.getAdapter().getCount();
 
             ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
-            if(actionBar != null){
+            if (actionBar != null)
                 actionBar.setTitle(String.format("%d of %d", (position + 1), totalPages));
-            }
         }
     }
 
