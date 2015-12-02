@@ -56,7 +56,6 @@ public class GridSpacesItemDecoration extends RecyclerView.ItemDecoration {
             }
         }
 
-
         outRect.bottom = mSpace;
     }
 }

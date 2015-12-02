@@ -80,7 +80,7 @@ public class ImageGalleryActivity extends AppCompatActivity implements ImageGall
 
         intent.putStringArrayListExtra("images", mImages);
         intent.putExtra("position", position);
-        if(mPaletteColorType != null){
+        if (mPaletteColorType != null) {
             intent.putExtra("palette_color_type", mPaletteColorType);
         }
 
@@ -94,9 +94,9 @@ public class ImageGalleryActivity extends AppCompatActivity implements ImageGall
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
     }
 
-    private void setUpRecyclerView(){
+    private void setUpRecyclerView() {
         int numOfColumns;
-        if(ImageGalleryUtils.isInLandscapeMode(this)){
+        if (ImageGalleryUtils.isInLandscapeMode(this)) {
             numOfColumns = 4;
         } else {
             numOfColumns = 3;

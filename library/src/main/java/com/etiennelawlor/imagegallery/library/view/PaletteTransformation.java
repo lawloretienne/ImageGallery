@@ -3,6 +3,7 @@ package com.etiennelawlor.imagegallery.library.view;
 /**
  * Created by etiennelawlor on 8/20/15.
  */
+
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.support.annotation.NonNull;
@@ -22,33 +23,46 @@ import java.util.WeakHashMap;
  * Transformation used to extract {@link Palette} information from the {@linkplain Bitmap}.
  */
 public final class PaletteTransformation implements Transformation {
+
     private static final PaletteTransformation INSTANCE = new PaletteTransformation();
     private static final Map<Bitmap, Palette> CACHE = new WeakHashMap<>();
-
-    /**
-     * A {@link Target} that receives {@link Palette} information in its callback.
-     * @see Target
-     */
-    public static abstract class PaletteTarget implements Target {
-        /**
-         * Callback when an image has been successfully loaded.
-         * Note: You must not recycle the bitmap.
-         * @param palette The extracted {@linkplain Palette}
-         */
-        protected abstract void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from, Palette palette);
-
-        @Override public final void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-            final Palette palette = getPalette(bitmap);
-            onBitmapLoaded(bitmap, from, palette);
-        }
-    }
 
     public static Palette getPalette(Bitmap bitmap) {
         return CACHE.get(bitmap);
     }
 
     /**
+     * Obtains a {@link PaletteTransformation} to extract {@link Palette} information.
+     *
+     * @return A {@link PaletteTransformation}
+     */
+    public static PaletteTransformation instance() {
+        return INSTANCE;
+    }
+
+    // region Constructors
+    private PaletteTransformation() {
+    }
+    // endregion
+
+    //# Transformation Contract
+    @Override
+    public final Bitmap transform(Bitmap source) {
+        final Palette palette = Palette.generate(source);
+        CACHE.put(source, palette);
+        return source;
+    }
+
+    @Override
+    public String key() {
+        return ""; // Stable key for all requests. An unfortunate requirement.
+    }
+
+    // region Inner Classes
+
+    /**
      * A {@link Callback} that receives {@link Palette} information in its callback.
+     *
      * @see Callback
      */
     public static abstract class PaletteCallback implements Callback {
@@ -60,7 +74,8 @@ public final class PaletteTransformation implements Transformation {
 
         protected abstract void onSuccess(Palette palette);
 
-        @Override public final void onSuccess() {
+        @Override
+        public final void onSuccess() {
             if (getImageView() == null) {
                 return;
             }
@@ -75,23 +90,25 @@ public final class PaletteTransformation implements Transformation {
     }
 
     /**
-     * Obtains a {@link PaletteTransformation} to extract {@link Palette} information.
-     * @return A {@link PaletteTransformation}
+     * A {@link Target} that receives {@link Palette} information in its callback.
+     *
+     * @see Target
      */
-    public static PaletteTransformation instance() {
-        return INSTANCE;
+    public static abstract class PaletteTarget implements Target {
+        /**
+         * Callback when an image has been successfully loaded.
+         * Note: You must not recycle the bitmap.
+         *
+         * @param palette The extracted {@linkplain Palette}
+         */
+        protected abstract void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from, Palette palette);
+
+        @Override
+        public final void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+            final Palette palette = getPalette(bitmap);
+            onBitmapLoaded(bitmap, from, palette);
+        }
     }
 
-    //# Transformation Contract
-    @Override public final Bitmap transform(Bitmap source) {
-        final Palette palette = Palette.generate(source);
-        CACHE.put(source, palette);
-        return source;
-    }
-
-    @Override public String key() {
-        return ""; // Stable key for all requests. An unfortunate requirement.
-    }
-
-    private PaletteTransformation() { }
+    // endregion
 }

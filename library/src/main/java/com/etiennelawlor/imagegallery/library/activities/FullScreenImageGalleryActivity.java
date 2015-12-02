@@ -18,6 +18,7 @@ import java.util.List;
 
 public class FullScreenImageGalleryActivity extends AppCompatActivity {
 
+    // region Member Variables
     private List<String> mImages;
     private int mPosition;
     private PaletteColorType mPaletteColorType;
@@ -102,14 +103,7 @@ public class FullScreenImageGalleryActivity extends AppCompatActivity {
 
     private void setUpViewPager() {
         ArrayList<String> images = new ArrayList<>();
-
-        int width = ImageGalleryUtils.getScreenWidth(this);
-        int height = ImageGalleryUtils.getScreenHeight(this);
-
-        for (String image : mImages) {
-            String imageUrl = ImageGalleryUtils.getFormattedImageUrl(image, width, height);
-            images.add(imageUrl);
-        }
+        images.addAll(mImages);
 
         FullScreenImageGalleryAdapter fullScreenImageGalleryAdapter = new FullScreenImageGalleryAdapter(images, mPaletteColorType);
         mViewPager.setAdapter(fullScreenImageGalleryAdapter);

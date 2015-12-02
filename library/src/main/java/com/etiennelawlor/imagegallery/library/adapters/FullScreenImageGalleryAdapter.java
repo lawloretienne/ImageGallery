@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 
 import com.etiennelawlor.imagegallery.library.R;
 import com.etiennelawlor.imagegallery.library.enums.PaletteColorType;
+import com.etiennelawlor.imagegallery.library.util.ImageGalleryUtils;
 import com.etiennelawlor.imagegallery.library.view.PaletteTransformation;
 import com.squareup.picasso.Picasso;
 
@@ -46,9 +47,13 @@ public class FullScreenImageGalleryAdapter extends PagerAdapter {
 
         String image = mImages.get(position);
 
+        Context context = imageView.getContext();
+        int width = ImageGalleryUtils.getScreenWidth(context);
+
         if (!TextUtils.isEmpty(image)) {
             Picasso.with(imageView.getContext())
                     .load(image)
+                    .resize(width, 0)
                     .transform(PaletteTransformation.instance())
                     .into(imageView, new PaletteTransformation.PaletteCallback(imageView) {
                         @Override

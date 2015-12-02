@@ -47,7 +47,7 @@ public class ImageGalleryAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, final int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
         final ImageViewHolder holder = (ImageViewHolder) viewHolder;
 
         String image = mImages.get(position);
@@ -57,8 +57,11 @@ public class ImageGalleryAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         holder.mFrameLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mOnImageClickListener != null) {
-                    mOnImageClickListener.onImageClick(position);
+                int adapterPos = holder.getAdapterPosition();
+                if(adapterPos != RecyclerView.NO_POSITION){
+                    if (mOnImageClickListener != null) {
+                        mOnImageClickListener.onImageClick(adapterPos);
+                    }
                 }
             }
         });
@@ -98,11 +101,11 @@ public class ImageGalleryAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     }
 
     private void setUpImage(ImageView iv, String imageUrl) {
-        String formattedImageUrl = ImageGalleryUtils.getFormattedImageUrl(imageUrl, mGridItemWidth, mGridItemHeight);
-
-        if (!TextUtils.isEmpty(formattedImageUrl)) {
+        if (!TextUtils.isEmpty(imageUrl)) {
             Picasso.with(iv.getContext())
-                    .load(formattedImageUrl)
+                    .load(imageUrl)
+                    .resize(mGridItemWidth, mGridItemHeight)
+                    .centerCrop()
                     .into(iv);
         } else {
             iv.setImageDrawable(null);
