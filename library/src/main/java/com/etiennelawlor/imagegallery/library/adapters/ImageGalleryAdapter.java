@@ -104,6 +104,8 @@ public class ImageGalleryAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         if (!TextUtils.isEmpty(imageUrl)) {
             Picasso.with(iv.getContext())
                     .load(imageUrl)
+                    .memoryPolicy(MemoryPolicy.NO_CACHE)
+                    .networkPolicy(NetworkPolicy.NO_CACHE)
                     .resize(mGridItemWidth, mGridItemHeight)
                     .centerCrop()
                     .into(iv);
