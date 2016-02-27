@@ -11,10 +11,10 @@ import android.view.MenuItem;
 import com.etiennelawlor.imagegallery.library.R;
 import com.etiennelawlor.imagegallery.library.adapters.FullScreenImageGalleryAdapter;
 import com.etiennelawlor.imagegallery.library.enums.PaletteColorType;
-import com.etiennelawlor.imagegallery.library.util.ImageGalleryUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class FullScreenImageGalleryActivity extends AppCompatActivity {
 
@@ -119,7 +119,7 @@ public class FullScreenImageGalleryActivity extends AppCompatActivity {
 
             ActionBar actionBar = getSupportActionBar();
             if(actionBar != null){
-                actionBar.setTitle(String.format("%d of %d", (position + 1), totalPages));
+                actionBar.setTitle(String.format("%d/%d", (position + 1), totalPages));
             }
         }
     }
