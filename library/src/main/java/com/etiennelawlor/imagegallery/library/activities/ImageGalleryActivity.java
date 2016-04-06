@@ -9,24 +9,23 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.View;
+import android.widget.ImageView;
 
 import com.etiennelawlor.imagegallery.library.R;
 import com.etiennelawlor.imagegallery.library.adapters.ImageGalleryAdapter;
-import com.etiennelawlor.imagegallery.library.enums.PaletteColorType;
 import com.etiennelawlor.imagegallery.library.util.ImageGalleryUtils;
 import com.etiennelawlor.imagegallery.library.view.GridSpacesItemDecoration;
 
 import java.util.ArrayList;
 
-public class ImageGalleryActivity extends AppCompatActivity implements ImageGalleryAdapter.OnImageClickListener {
+public class ImageGalleryActivity extends AppCompatActivity implements ImageGalleryAdapter.OnImageClickListener, ImageGalleryAdapter.ImageThumbnailLoader {
 
     // region Member Variables
     private ArrayList<String> mImages;
-    private PaletteColorType mPaletteColorType;
 
     private Toolbar mToolbar;
     private RecyclerView mRecyclerView;
+    private static ImageGalleryAdapter.ImageThumbnailLoader sImageThumbnailLoader;
     // endregion
 
     // region Lifecycle Methods
@@ -49,7 +48,6 @@ public class ImageGalleryActivity extends AppCompatActivity implements ImageGall
             Bundle extras = intent.getExtras();
             if (extras != null) {
                 mImages = extras.getStringArrayList("images");
-                mPaletteColorType = (PaletteColorType) extras.get("palette_color_type");
             }
         }
 
@@ -80,11 +78,15 @@ public class ImageGalleryActivity extends AppCompatActivity implements ImageGall
 
         intent.putStringArrayListExtra("images", mImages);
         intent.putExtra("position", position);
-        if (mPaletteColorType != null) {
-            intent.putExtra("palette_color_type", mPaletteColorType);
-        }
 
         startActivity(intent);
+    }
+    // endregion
+
+    // region ImageGalleryAdapter.ImageThumbnailLoader Methods
+    @Override
+    public void loadImageThumbnail(ImageView iv, String imageUrl, int dimension) {
+        sImageThumbnailLoader.loadImageThumbnail(iv, imageUrl, dimension);
     }
     // endregion
 
@@ -106,8 +108,13 @@ public class ImageGalleryActivity extends AppCompatActivity implements ImageGall
         mRecyclerView.addItemDecoration(new GridSpacesItemDecoration(ImageGalleryUtils.dp2px(this, 2), numOfColumns));
         ImageGalleryAdapter imageGalleryAdapter = new ImageGalleryAdapter(mImages);
         imageGalleryAdapter.setOnImageClickListener(this);
+        imageGalleryAdapter.setImageThumbnailLoader(this);
 
         mRecyclerView.setAdapter(imageGalleryAdapter);
+    }
+
+    public static void setImageThumbnailLoader(ImageGalleryAdapter.ImageThumbnailLoader loader) {
+        sImageThumbnailLoader = loader;
     }
     // endregion
 }

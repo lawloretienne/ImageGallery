@@ -19,10 +19,16 @@ android {
     }
 }
 
+ext {
+    supportLibVersion = '23.2.1'
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.2.0'
+    compile "com.android.support:appcompat-v7:${supportLibVersion}"
+    compile "com.android.support:palette-v7:${supportLibVersion}"
+    compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.jakewharton:butterknife:7.0.1'
     compile project(':library')
 }

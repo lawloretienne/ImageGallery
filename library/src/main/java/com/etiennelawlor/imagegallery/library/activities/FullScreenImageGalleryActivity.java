@@ -7,21 +7,21 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.etiennelawlor.imagegallery.library.R;
 import com.etiennelawlor.imagegallery.library.adapters.FullScreenImageGalleryAdapter;
-import com.etiennelawlor.imagegallery.library.enums.PaletteColorType;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
-public class FullScreenImageGalleryActivity extends AppCompatActivity {
+public class FullScreenImageGalleryActivity extends AppCompatActivity implements FullScreenImageGalleryAdapter.FullScreenImageLoader {
 
     // region Member Variables
     private List<String> mImages;
     private int mPosition;
-    private PaletteColorType mPaletteColorType;
+    private static FullScreenImageGalleryAdapter.FullScreenImageLoader sFullScreenImageLoader;
 
     private Toolbar mToolbar;
     private ViewPager mViewPager;
@@ -70,7 +70,6 @@ public class FullScreenImageGalleryActivity extends AppCompatActivity {
             Bundle extras = intent.getExtras();
             if (extras != null) {
                 mImages = extras.getStringArrayList("images");
-                mPaletteColorType = (PaletteColorType) extras.get("palette_color_type");
                 mPosition = extras.getInt("position");
             }
         }
@@ -95,6 +94,15 @@ public class FullScreenImageGalleryActivity extends AppCompatActivity {
         }
     }
 
+    // region FullScreenImageGalleryAdapter.FullScreenImageLoader Methods
+
+    @Override
+    public void loadFullScreenImage(ImageView iv, String imageUrl, int width, LinearLayout bglinearLayout) {
+        sFullScreenImageLoader.loadFullScreenImage(iv, imageUrl, width, bglinearLayout);
+    }
+
+    // endregion
+
     // region Helper Methods
     private void bindViews() {
         mViewPager = (ViewPager) findViewById(R.id.vp);
@@ -105,7 +113,8 @@ public class FullScreenImageGalleryActivity extends AppCompatActivity {
         ArrayList<String> images = new ArrayList<>();
         images.addAll(mImages);
 
-        FullScreenImageGalleryAdapter fullScreenImageGalleryAdapter = new FullScreenImageGalleryAdapter(images, mPaletteColorType);
+        FullScreenImageGalleryAdapter fullScreenImageGalleryAdapter = new FullScreenImageGalleryAdapter(images);
+        fullScreenImageGalleryAdapter.setFullScreenImageLoader(this);
         mViewPager.setAdapter(fullScreenImageGalleryAdapter);
         mViewPager.addOnPageChangeListener(mViewPagerOnPageChangeListener);
         mViewPager.setCurrentItem(mPosition);
@@ -126,6 +135,10 @@ public class FullScreenImageGalleryActivity extends AppCompatActivity {
 
     private void removeListeners() {
         mViewPager.removeOnPageChangeListener(mViewPagerOnPageChangeListener);
+    }
+
+    public static void setFullScreenImageLoader(FullScreenImageGalleryAdapter.FullScreenImageLoader loader) {
+        sFullScreenImageLoader = loader;
     }
     // endregion
 }
