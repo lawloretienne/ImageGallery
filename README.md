@@ -53,11 +53,12 @@ images.add("https://images.unsplash.com/photo-1430132594682-16e1185b17c5?q=80&fm
 images.add("https://images.unsplash.com/photo-1436891620584-47fd0e565afb?q=80&fm=jpg&s=33cf5b0ee9fbd292475a0c03bee481c9");
 
 intent.putStringArrayListExtra("images", images);
-// optionally set background color using Palette
-intent.putExtra("palette_color_type", PaletteColorType.VIBRANT);
+intent.putExtra("title", "Unsplash Images");
 
 startActivity(intent);
 ```
+
+You must now set up image loading by implementing these interfaces `ImageGalleryAdapter.ImageThumbnailLoader` and `FullScreenImageGalleryAdapter.FullScreenImageLoader`. See https://github.com/lawloretienne/ImageGallery/blob/master/sample/src/main/java/com/etiennelawlor/imagegallery/activities/MainActivity.java .
 
 ```xml
 
