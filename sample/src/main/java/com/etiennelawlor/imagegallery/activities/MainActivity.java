@@ -76,6 +76,11 @@ public class MainActivity extends AppCompatActivity implements ImageGalleryAdapt
 
         startActivity(intent);
     }
+
+    @OnClick(R.id.button_gallery_fragment)
+    public void onViewFragmentGalleryClicked(){
+        startActivity(new Intent(this, MainFragment.class));
+    }
     // endregion
 
     // region Lifecycle Methods

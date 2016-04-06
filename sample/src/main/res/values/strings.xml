@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">ImageGallery</string>
     <string name="view_gallery">View Gallery</string>
+    <string name="view_gallery_fragment">View Gallery in Fragment</string>
 </resources>
