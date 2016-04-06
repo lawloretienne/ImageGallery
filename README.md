@@ -58,6 +58,7 @@ intent.putExtra("title", "Unsplash Images");
 startActivity(intent);
 ```
 
+### Important Note
 You must now set up image loading by implementing these interfaces `ImageGalleryAdapter.ImageThumbnailLoader` and `FullScreenImageGalleryAdapter.FullScreenImageLoader`. See https://github.com/lawloretienne/ImageGallery/blob/master/sample/src/main/java/com/etiennelawlor/imagegallery/activities/MainActivity.java .
 
 ```xml
