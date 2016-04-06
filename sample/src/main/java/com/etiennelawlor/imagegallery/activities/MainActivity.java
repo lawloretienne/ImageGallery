@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity implements ImageGalleryAdapt
         images.add("https://images.unsplash.com/photo-1415226556993-1404e0c6e727?q=80&fm=jpg&s=334b8b5271cdbd8cbd4990a3aef89074");
 
         intent.putStringArrayListExtra("images", images);
+        intent.putExtra("title", "Unsplash Images");
 
         startActivity(intent);
     }

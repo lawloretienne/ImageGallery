@@ -22,6 +22,7 @@ public class ImageGalleryActivity extends AppCompatActivity implements ImageGall
 
     // region Member Variables
     private ArrayList<String> mImages;
+    private String mTitle;
 
     private Toolbar mToolbar;
     private RecyclerView mRecyclerView;
@@ -33,22 +34,24 @@ public class ImageGalleryActivity extends AppCompatActivity implements ImageGall
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        Intent intent = getIntent();
+        if (intent != null) {
+            Bundle extras = intent.getExtras();
+            if (extras != null) {
+                mImages = extras.getStringArrayList("images");
+                mTitle = extras.getString("title");
+            }
+        }
+
         setContentView(R.layout.activity_image_gallery);
 
         bindViews();
 
         setSupportActionBar(mToolbar);
         ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null)
+        if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
-
-
-        Intent intent = getIntent();
-        if (intent != null) {
-            Bundle extras = intent.getExtras();
-            if (extras != null) {
-                mImages = extras.getStringArrayList("images");
-            }
+            actionBar.setTitle(mTitle);
         }
 
         setUpRecyclerView();
