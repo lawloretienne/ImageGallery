@@ -5,9 +5,15 @@
     android:gravity="center">
 
     <Button
-        android:id="@+id/view_gallery_btn"
+        android:id="@+id/image_gallery_activity_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/view_gallery"/>
+        android:text="ImageGalleryActivity"/>
+
+    <Button
+        android:id="@+id/image_gallery_fragment_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ImageGalleryFragment"/>
 
 </LinearLayout>

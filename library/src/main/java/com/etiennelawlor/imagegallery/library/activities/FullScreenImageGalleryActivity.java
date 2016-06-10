@@ -18,17 +18,24 @@ import java.util.List;
 
 public class FullScreenImageGalleryActivity extends AppCompatActivity implements FullScreenImageGalleryAdapter.FullScreenImageLoader {
 
-    // region Member Variables
-    private List<String> mImages;
-    private int mPosition;
-    private static FullScreenImageGalleryAdapter.FullScreenImageLoader sFullScreenImageLoader;
+    // region Constants
+    public static final String KEY_IMAGES = "KEY_IMAGES";
+    public static final String KEY_POSITION = "KEY_POSITION";
+    // endregion
 
-    private Toolbar mToolbar;
-    private ViewPager mViewPager;
+    // region Views
+    private Toolbar toolbar;
+    private ViewPager viewPager;
+    // endregion
+
+    // region Member Variables
+    private List<String> images;
+    private int position;
+    private static FullScreenImageGalleryAdapter.FullScreenImageLoader fullScreenImageLoader;
     // endregion
 
     // region Listeners
-    private final ViewPager.OnPageChangeListener mViewPagerOnPageChangeListener = new ViewPager.OnPageChangeListener() {
+    private final ViewPager.OnPageChangeListener viewPagerOnPageChangeListener = new ViewPager.OnPageChangeListener() {
         @Override
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
@@ -36,8 +43,8 @@ public class FullScreenImageGalleryActivity extends AppCompatActivity implements
 
         @Override
         public void onPageSelected(int position) {
-            if (mViewPager != null) {
-                mViewPager.setCurrentItem(position);
+            if (viewPager != null) {
+                viewPager.setCurrentItem(position);
 
                 setActionBarTitle(position);
             }
@@ -59,7 +66,7 @@ public class FullScreenImageGalleryActivity extends AppCompatActivity implements
 
         bindViews();
 
-        setSupportActionBar(mToolbar);
+        setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null)
             actionBar.setDisplayHomeAsUpEnabled(true);
@@ -69,8 +76,8 @@ public class FullScreenImageGalleryActivity extends AppCompatActivity implements
         if (intent != null) {
             Bundle extras = intent.getExtras();
             if (extras != null) {
-                mImages = extras.getStringArrayList("images");
-                mPosition = extras.getInt("position");
+                images = extras.getStringArrayList(KEY_IMAGES);
+                position = extras.getInt(KEY_POSITION);
             }
         }
 
@@ -95,36 +102,34 @@ public class FullScreenImageGalleryActivity extends AppCompatActivity implements
     }
 
     // region FullScreenImageGalleryAdapter.FullScreenImageLoader Methods
-
     @Override
     public void loadFullScreenImage(ImageView iv, String imageUrl, int width, LinearLayout bglinearLayout) {
-        sFullScreenImageLoader.loadFullScreenImage(iv, imageUrl, width, bglinearLayout);
+        fullScreenImageLoader.loadFullScreenImage(iv, imageUrl, width, bglinearLayout);
     }
-
     // endregion
 
     // region Helper Methods
     private void bindViews() {
-        mViewPager = (ViewPager) findViewById(R.id.vp);
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        viewPager = (ViewPager) findViewById(R.id.vp);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
     }
 
     private void setUpViewPager() {
-        ArrayList<String> images = new ArrayList<>();
-        images.addAll(mImages);
+        ArrayList<String> imageList = new ArrayList<>();
+        imageList.addAll(images);
 
-        FullScreenImageGalleryAdapter fullScreenImageGalleryAdapter = new FullScreenImageGalleryAdapter(images);
+        FullScreenImageGalleryAdapter fullScreenImageGalleryAdapter = new FullScreenImageGalleryAdapter(imageList);
         fullScreenImageGalleryAdapter.setFullScreenImageLoader(this);
-        mViewPager.setAdapter(fullScreenImageGalleryAdapter);
-        mViewPager.addOnPageChangeListener(mViewPagerOnPageChangeListener);
-        mViewPager.setCurrentItem(mPosition);
+        viewPager.setAdapter(fullScreenImageGalleryAdapter);
+        viewPager.addOnPageChangeListener(viewPagerOnPageChangeListener);
+        viewPager.setCurrentItem(position);
 
-        setActionBarTitle(mPosition);
+        setActionBarTitle(position);
     }
 
     private void setActionBarTitle(int position) {
-        if (mViewPager != null && mImages.size() > 1) {
-            int totalPages = mViewPager.getAdapter().getCount();
+        if (viewPager != null && images.size() > 1) {
+            int totalPages = viewPager.getAdapter().getCount();
 
             ActionBar actionBar = getSupportActionBar();
             if(actionBar != null){
@@ -134,11 +139,11 @@ public class FullScreenImageGalleryActivity extends AppCompatActivity implements
     }
 
     private void removeListeners() {
-        mViewPager.removeOnPageChangeListener(mViewPagerOnPageChangeListener);
+        viewPager.removeOnPageChangeListener(viewPagerOnPageChangeListener);
     }
 
     public static void setFullScreenImageLoader(FullScreenImageGalleryAdapter.FullScreenImageLoader loader) {
-        sFullScreenImageLoader = loader;
+        fullScreenImageLoader = loader;
     }
     // endregion
 }

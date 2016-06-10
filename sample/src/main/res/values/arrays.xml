@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="TypographyDashes">
+    <string-array name="unsplash_images">
+        <item>https://images.unsplash.com/photo-1437422061949-f6efbde0a471?q=80&amp;fm=jpg&amp;s=e23055c9ba7686b8fe583fb8318a1f88</item>
+        <item>https://images.unsplash.com/photo-1434139240289-56c519f77cb0?q=80&amp;fm=jpg&amp;s=13f8a0d1c2f96b5f311dedeb17cddb60</item>
+        <item>https://images.unsplash.com/photo-1429152937938-07b5f2828cdd?q=80&amp;fm=jpg&amp;s=a4f424db0ae5a398297df5ae5e0520d6</item>
+        <item>https://images.unsplash.com/photo-1430866880825-336a7d7814eb?q=80&amp;fm=jpg&amp;s=450de8563ac041f48b1563b499f56895</item>
+        <item>https://images.unsplash.com/photo-1429547584745-d8bec594c82e?q=80&amp;fm=jpg&amp;s=e9a7d9973088122a3e453cb2af541201</item>
+        <item>https://images.unsplash.com/photo-1429277158984-614d155e0017?q=80&amp;fm=jpg&amp;s=138f154e17a304b296c953323862633b</item>
+        <item>https://images.unsplash.com/photo-1429042007245-890c9e2603af?q=80&amp;fm=jpg&amp;s=8b76d20174cf46bffe32ea18f05551d3</item>
+        <item>https://images.unsplash.com/photo-1429091967365-492aaa5accfe?q=80&amp;fm=jpg&amp;s=b7430cfe5508430aea39fcf3b0645878</item>
+        <item>https://images.unsplash.com/photo-1430132594682-16e1185b17c5?q=80&amp;fm=jpg&amp;s=a70abbfff85382d11b03b9bbc71649c3</item>
+        <item>https://images.unsplash.com/photo-1465152251391-e94453ee3f5a?format=auto&amp;auto=compress&amp;dpr=2&amp;crop=entropy&amp;fit=crop&amp;w=1080&amp;h=721&amp;q=80</item>
+        <item>https://images.unsplash.com/photo-1415871989540-61fe9268d3c8?q=80&amp;fm=jpg&amp;s=061a03a7abe860a6c165cc3994feaba2</item>
+        <item>https://images.unsplash.com/photo-1415033523948-6c31d010530d?q=80&amp;fm=jpg&amp;s=ebe77e93f095b1a21ff6f090d332a815</item>
+        <item>https://images.unsplash.com/photo-1415201179613-bd037ff5eb29?q=80&amp;fm=jpg&amp;s=46a25087049ca6bdcff8390a342b9c59</item>
+        <item>https://images.unsplash.com/photo-1418227165283-1595d13726cd?q=80&amp;fm=jpg&amp;s=45b1869e9cd4fce23510ded9370e3966</item>
+        <item>https://images.unsplash.com/photo-1416949929422-a1d9c8fe84af?q=80&amp;fm=jpg&amp;s=ba414d9605af43b67d974182756cfb1d</item>
+        <item>https://images.unsplash.com/reserve/JaI1BywIT5Or8Jfmci1E_zakopane.jpg?q=80&amp;fm=jpg&amp;s=57142c70a82dc560fc67ce09c12a6052</item>
+        <item>https://images.unsplash.com/uploads/141362941583982a7e0fc/abcfbca1?q=80&amp;fm=jpg&amp;s=4f36891ccddbd86ed034d5943fb0eccb</item>
+        <item>https://images.unsplash.com/uploads/14116941824817ba1f28e/78c8dff1?q=80&amp;fm=jpg&amp;s=5600be7f06b56681c56f55c787128538</item>
+        <item>https://images.unsplash.com/photo-1413977886085-3bbbf9a7cf6e?q=80&amp;fm=jpg&amp;s=bc09d3becea6f665b39290475f3467c8</item>
+        <item>https://images.unsplash.com/photo-1415226194219-638f50c5d25f?q=80&amp;fm=jpg&amp;s=4f3f71caf6caeb5d4f508a001111e480</item>
+        <item>https://images.unsplash.com/photo-1416934625760-d56f5e79f6fe?q=80&amp;fm=jpg&amp;s=4c526b15bda8434c6f9e7eefe12b29be</item>
+        <item>https://images.unsplash.com/uploads/141220211075617c40312/e2ddba22?q=80&amp;fm=jpg&amp;s=394885b1c8da6776e79815e961118c81</item>
+        <item>https://images.unsplash.com/uploads/1412238370909393b4a19/79f023f1?q=80&amp;fm=jpg&amp;s=95844dfcd1993f4f0b10eab82c183631</item>
+        <item>https://images.unsplash.com/reserve/OQx70jjBSLOMI5ackhxm_urbex-ppc-030.jpg?q=80&amp;fm=jpg&amp;s=821aacb41fc9d3a94e5263d58dccce80</item>
+        <item>https://images.unsplash.com/39/yvDPJ8ZSmSVob7pRxIvU_IMG_40322.jpg?q=80&amp;fm=jpg&amp;s=30b5834ad1c403bcfd7fa5c4dfaba625</item>
+        <item>https://images.unsplash.com/22/one-scene.JPG?q=80&amp;fm=jpg&amp;s=b8b57577424cdf5545bb11bdf6f4b5a7</item>
+        <item>https://images.unsplash.com/36/e6mVuK2jQlWxKt3eAnQT_image.jpg?q=80&amp;fm=jpg&amp;s=0a3d8da572b0ed5e0cb963f6fa13588a</item>
+        <item>https://images.unsplash.com/41/pHyYeNZMRFOIRpYeW7X3_manacloseup%20copy.jpg?q=80&amp;fm=jpg&amp;s=99f2dbdf1526488a93d3cf307dea43d6</item>
+        <item>https://images.unsplash.com/44/MIbCzcvxQdahamZSNQ26_12082014-IMG_3526.jpg?q=80&amp;fm=jpg&amp;s=9f2b7926c5c13f719c57536392d78b49</item>
+        <item>https://images.unsplash.com/photo-1415226556993-1404e0c6e727?q=80&amp;fm=jpg&amp;s=334b8b5271cdbd8cbd4990a3aef89074</item>
+    </string-array>
+
+</resources>

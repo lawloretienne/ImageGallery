@@ -19,8 +19,8 @@ import java.util.List;
 public class FullScreenImageGalleryAdapter extends PagerAdapter {
 
     // region Member Variables
-    private final List<String> mImages;
-    private FullScreenImageLoader mFullScreenImageLoader;
+    private final List<String> images;
+    private FullScreenImageLoader fullScreenImageLoader;
     // endregion
 
     // region Interfaces
@@ -31,7 +31,7 @@ public class FullScreenImageGalleryAdapter extends PagerAdapter {
 
     // region Constructors
     public FullScreenImageGalleryAdapter(List<String> images) {
-        mImages = images;
+        this.images = images;
     }
     // endregion
 
@@ -45,12 +45,12 @@ public class FullScreenImageGalleryAdapter extends PagerAdapter {
         ImageView imageView = (ImageView) view.findViewById(R.id.iv);
         final LinearLayout linearLayout = (LinearLayout) view.findViewById(R.id.ll);
 
-        String image = mImages.get(position);
+        String image = images.get(position);
 
         Context context = imageView.getContext();
         int width = ImageGalleryUtils.getScreenWidth(context);
 
-        mFullScreenImageLoader.loadFullScreenImage(imageView, image, width, linearLayout);
+        fullScreenImageLoader.loadFullScreenImage(imageView, image, width, linearLayout);
 
         container.addView(view, 0);
 
@@ -59,7 +59,7 @@ public class FullScreenImageGalleryAdapter extends PagerAdapter {
 
     @Override
     public int getCount() {
-        return mImages.size();
+        return images.size();
     }
 
     @Override
@@ -74,7 +74,7 @@ public class FullScreenImageGalleryAdapter extends PagerAdapter {
 
     // region Helper Methods
     public void setFullScreenImageLoader(FullScreenImageLoader loader) {
-        this.mFullScreenImageLoader = loader;
+        this.fullScreenImageLoader = loader;
     }
     // endregion
 }

@@ -10,14 +10,14 @@ import android.view.View;
 public class GridSpacesItemDecoration extends RecyclerView.ItemDecoration {
 
     // region Member Variables
-    private final int mSpace;
-    private final int mNumOfColumns;
+    private final int space;
+    private final int numOfColumns;
     // endregion
 
     // region Constructors
     public GridSpacesItemDecoration(int space, int numOfColumns) {
-        mSpace = space;
-        mNumOfColumns = numOfColumns;
+        this.space = space;
+        this.numOfColumns = numOfColumns;
     }
     // endregion
 
@@ -25,38 +25,38 @@ public class GridSpacesItemDecoration extends RecyclerView.ItemDecoration {
     public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
 
         int position = parent.getChildAdapterPosition(view);
-        if(position < mNumOfColumns){
-            outRect.top = mSpace;
+        if(position < numOfColumns){
+            outRect.top = space;
         }
 
-        if(mNumOfColumns == 3){
-            if(position % mNumOfColumns == 0){
-                outRect.left = mSpace;
-                outRect.right = mSpace/2;
-            } else if(position % mNumOfColumns == 1){
-                outRect.left = mSpace/2;
-                outRect.right = mSpace/2;
+        if(numOfColumns == 3){
+            if(position % numOfColumns == 0){
+                outRect.left = space;
+                outRect.right = space/2;
+            } else if(position % numOfColumns == 1){
+                outRect.left = space/2;
+                outRect.right = space/2;
             } else {
-                outRect.left = mSpace/2;
-                outRect.right = mSpace;
+                outRect.left = space/2;
+                outRect.right = space;
             }
-        } else if(mNumOfColumns == 4){
-            if(position % mNumOfColumns == 0){
-                outRect.left = mSpace;
-                outRect.right = mSpace/2;
-            } else if(position % mNumOfColumns == 1){
-                outRect.left = mSpace/2;
-                outRect.right = mSpace/2;
-            } else if(position % mNumOfColumns == 2){
-                outRect.left = mSpace/2;
-                outRect.right = mSpace/2;
+        } else if(numOfColumns == 4){
+            if(position % numOfColumns == 0){
+                outRect.left = space;
+                outRect.right = space/2;
+            } else if(position % numOfColumns == 1){
+                outRect.left = space/2;
+                outRect.right = space/2;
+            } else if(position % numOfColumns == 2){
+                outRect.left = space/2;
+                outRect.right = space/2;
             } else {
-                outRect.left = mSpace/2;
-                outRect.right = mSpace;
+                outRect.left = space/2;
+                outRect.right = space;
             }
         }
 
-        outRect.bottom = mSpace;
+        outRect.bottom = space;
     }
 }
 
