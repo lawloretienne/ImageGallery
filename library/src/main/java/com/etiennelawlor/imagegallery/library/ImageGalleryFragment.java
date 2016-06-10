@@ -42,6 +42,7 @@ public class ImageGalleryFragment extends Fragment implements ImageGalleryAdapte
     // region Member Variables
     private ArrayList<String> images;
     private String title;
+    private GridSpacesItemDecoration gridSpacesItemDecoration;
     private static ImageGalleryAdapter.ImageThumbnailLoader imageThumbnailLoader;
     // endregion
 
@@ -106,6 +107,7 @@ public class ImageGalleryFragment extends Fragment implements ImageGalleryAdapte
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
+        recyclerView.removeItemDecoration(gridSpacesItemDecoration);
         setUpRecyclerView();
     }
 
@@ -144,7 +146,8 @@ public class ImageGalleryFragment extends Fragment implements ImageGalleryAdapte
         }
 
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), numOfColumns));
-        recyclerView.addItemDecoration(new GridSpacesItemDecoration(ImageGalleryUtils.dp2px(getActivity(), 2), numOfColumns));
+        gridSpacesItemDecoration = new GridSpacesItemDecoration(ImageGalleryUtils.dp2px(getActivity(), 2), numOfColumns);
+        recyclerView.addItemDecoration(gridSpacesItemDecoration);
         ImageGalleryAdapter imageGalleryAdapter = new ImageGalleryAdapter(images);
         imageGalleryAdapter.setOnImageClickListener(this);
         imageGalleryAdapter.setImageThumbnailLoader(this);

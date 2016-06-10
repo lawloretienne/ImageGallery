@@ -33,6 +33,7 @@ public class ImageGalleryActivity extends AppCompatActivity implements ImageGall
     // region Member Variables
     private ArrayList<String> images;
     private String title;
+    private GridSpacesItemDecoration gridSpacesItemDecoration;
     private static ImageGalleryAdapter.ImageThumbnailLoader imageThumbnailLoader;
     // endregion
 
@@ -78,6 +79,7 @@ public class ImageGalleryActivity extends AppCompatActivity implements ImageGall
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
+        recyclerView.removeItemDecoration(gridSpacesItemDecoration);
         setUpRecyclerView();
     }
 
@@ -115,7 +117,8 @@ public class ImageGalleryActivity extends AppCompatActivity implements ImageGall
         }
 
         recyclerView.setLayoutManager(new GridLayoutManager(ImageGalleryActivity.this, numOfColumns));
-        recyclerView.addItemDecoration(new GridSpacesItemDecoration(ImageGalleryUtils.dp2px(this, 2), numOfColumns));
+        gridSpacesItemDecoration = new GridSpacesItemDecoration(ImageGalleryUtils.dp2px(this, 2), numOfColumns);
+        recyclerView.addItemDecoration(gridSpacesItemDecoration);
         ImageGalleryAdapter imageGalleryAdapter = new ImageGalleryAdapter(images);
         imageGalleryAdapter.setOnImageClickListener(this);
         imageGalleryAdapter.setImageThumbnailLoader(this);
