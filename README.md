@@ -14,6 +14,7 @@ Palette color types
  - DARK_MUTED
 
 Supports pinch-to-zoom on the images
+
 ImageGalleryActivity           |  FullScreenImageGallery
 :-------------------------:|:-------------------------:
 ![](https://raw.githubusercontent.com/lawloretienne/ImageGallery/master/images/ImageGallery_Screenshot6.png)  |  ![](https://raw.githubusercontent.com/lawloretienne/ImageGallery/master/images/ImageGallery_Screenshot4.png)
