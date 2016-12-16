@@ -2,21 +2,19 @@
 
     <!-- AppCompat Colors -->
     <color name="primary">@color/grey_500</color>
-    <color name="primary_dark">@android:color/black</color>
-    <color name="control_highlight">@color/grey_500</color>
+    <color name="primary_dark">@color/grey_700</color>
+    <color name="accent">@color/blue_500</color>
 
-    <color name="transparent_black_five">#0D000000</color>
-    <color name="transparent_black_ten">#1A000000</color>
-    <color name="transparent_black_twenty">#33000000</color>
-    <color name="transparent_black_forty">#66000000</color>
-    <color name="transparent_black_fifty">#80000000</color>
-    <color name="transparent_black_sixty">#99000000</color>
-    <color name="transparent_black_seventy">#B3000000</color>
-    <color name="transparent_black_eighty">#CC000000</color>
-    <color name="transparent_black_ninty">#E6000000</color>
-    <color name="transparent_black_ninty_five">#F2000000</color>
-
-    <color name="transparent_grey_900_eighty">#CC212121</color>
+    <color name="five_percent_transparency_black">#0D000000</color>
+    <color name="ten_percent_transparency_black">#1A000000</color>
+    <color name="twenty_percent_transparency_black">#33000000</color>
+    <color name="forty_percent_transparency_black">#66000000</color>
+    <color name="fifty_percent_transparency_black">#80000000</color>
+    <color name="sixty_percent_transparency_black">#99000000</color>
+    <color name="seventy_percent_transparency_black">#B3000000</color>
+    <color name="eighty_percent_transparency_black">#CC000000</color>
+    <color name="ninty_percent_transparency_black">#E6000000</color>
+    <color name="ninty_five_percent_transparency_black">#F2000000</color>
 
 
 </resources>

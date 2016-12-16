@@ -1,4 +1,4 @@
-package com.etiennelawlor.imagegallery.library.view;
+package com.etiennelawlor.imagegallery.library.ui;
 
 
 /*

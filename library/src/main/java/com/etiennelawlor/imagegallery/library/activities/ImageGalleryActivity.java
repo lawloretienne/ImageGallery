@@ -13,8 +13,7 @@ import android.widget.ImageView;
 
 import com.etiennelawlor.imagegallery.library.R;
 import com.etiennelawlor.imagegallery.library.adapters.ImageGalleryAdapter;
-import com.etiennelawlor.imagegallery.library.util.ImageGalleryUtils;
-import com.etiennelawlor.imagegallery.library.view.GridSpacesItemDecoration;
+import com.etiennelawlor.imagegallery.library.utilities.DisplayUtility;
 
 import java.util.ArrayList;
 
@@ -33,7 +32,6 @@ public class ImageGalleryActivity extends AppCompatActivity implements ImageGall
     // region Member Variables
     private ArrayList<String> images;
     private String title;
-    private GridSpacesItemDecoration gridSpacesItemDecoration;
     private static ImageGalleryAdapter.ImageThumbnailLoader imageThumbnailLoader;
     // endregion
 
@@ -79,7 +77,6 @@ public class ImageGalleryActivity extends AppCompatActivity implements ImageGall
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        recyclerView.removeItemDecoration(gridSpacesItemDecoration);
         setUpRecyclerView();
     }
 
@@ -110,16 +107,14 @@ public class ImageGalleryActivity extends AppCompatActivity implements ImageGall
 
     private void setUpRecyclerView() {
         int numOfColumns;
-        if (ImageGalleryUtils.isInLandscapeMode(this)) {
+        if (DisplayUtility.isInLandscapeMode(this)) {
             numOfColumns = 4;
         } else {
             numOfColumns = 3;
         }
 
         recyclerView.setLayoutManager(new GridLayoutManager(ImageGalleryActivity.this, numOfColumns));
-        gridSpacesItemDecoration = new GridSpacesItemDecoration(ImageGalleryUtils.dp2px(this, 2), numOfColumns);
-        recyclerView.addItemDecoration(gridSpacesItemDecoration);
-        ImageGalleryAdapter imageGalleryAdapter = new ImageGalleryAdapter(images);
+        ImageGalleryAdapter imageGalleryAdapter = new ImageGalleryAdapter(this, images);
         imageGalleryAdapter.setOnImageClickListener(this);
         imageGalleryAdapter.setImageThumbnailLoader(this);
 

@@ -5,19 +5,19 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/Theme.ImageGallery" >
 
         <activity
             android:name="com.etiennelawlor.imagegallery.library.activities.ImageGalleryActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label=""
-            android:theme="@style/ImageGalleryTheme" />
+            android:theme="@style/Theme.ImageGallery" />
 
         <activity
             android:name=".activities.HostImageGalleryActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label=""
-            android:theme="@style/ImageGalleryTheme" />
+            android:theme="@style/Theme.ImageGallery" />
 
         <activity
             android:name=".activities.MainActivity"

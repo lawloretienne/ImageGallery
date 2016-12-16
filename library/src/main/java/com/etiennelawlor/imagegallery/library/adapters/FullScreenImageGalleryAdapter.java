@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.etiennelawlor.imagegallery.library.R;
-import com.etiennelawlor.imagegallery.library.util.ImageGalleryUtils;
+import com.etiennelawlor.imagegallery.library.utilities.DisplayUtility;
 
 import java.util.List;
 
@@ -48,7 +48,7 @@ public class FullScreenImageGalleryAdapter extends PagerAdapter {
         String image = images.get(position);
 
         Context context = imageView.getContext();
-        int width = ImageGalleryUtils.getScreenWidth(context);
+        int width = DisplayUtility.getScreenWidth(context);
 
         fullScreenImageLoader.loadFullScreenImage(imageView, image, width, linearLayout);
 

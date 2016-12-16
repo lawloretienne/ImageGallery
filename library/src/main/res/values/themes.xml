@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="ImageGalleryTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowActionBarOverlay">true</item>
-        <item name="android:windowBackground">@null</item>
-        <item name="colorPrimary">@color/grey_500</item>
-        <item name="colorPrimaryDark">@android:color/black</item>
+    <!-- Base application theme. -->
+    <style name="Base.Theme.ImageGallery" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorAccent">@color/accent</item>
+        <item name="colorButtonNormal">@color/primary</item>
+        <item name="colorControlActivated">@color/primary</item>
         <item name="colorControlHighlight">@color/grey_500</item>
-        <item name="android:textColorPrimary">@android:color/white</item>
-        <item name="android:textColorSecondary">@android:color/white</item>
+        <item name="android:textColorPrimary">@color/primary_text</item>
+        <item name="android:textColorSecondary">@color/secondary_text</item>
     </style>
+
+    <style name="Theme.ImageGallery" parent="Base.Theme.ImageGallery" />
 
 </resources>

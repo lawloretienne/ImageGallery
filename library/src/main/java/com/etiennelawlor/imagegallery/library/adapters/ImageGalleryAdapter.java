@@ -1,5 +1,6 @@
 package com.etiennelawlor.imagegallery.library.adapters;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +9,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.etiennelawlor.imagegallery.library.R;
-import com.etiennelawlor.imagegallery.library.util.ImageGalleryUtils;
+import com.etiennelawlor.imagegallery.library.utilities.DisplayUtility;
 
 import java.util.List;
 
@@ -36,8 +37,18 @@ public class ImageGalleryAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     // endregion
 
     // region Constructors
-    public ImageGalleryAdapter(List<String> images) {
+    public ImageGalleryAdapter(Context context, List<String> images) {
         this.images = images;
+
+        int screenWidth = DisplayUtility.getScreenWidth(context);
+        int numOfColumns;
+        if (DisplayUtility.isInLandscapeMode(context)) {
+            numOfColumns = 4;
+        } else {
+            numOfColumns = 3;
+        }
+
+        gridItemWidth = screenWidth / numOfColumns;
     }
     // endregion
 
@@ -90,19 +101,9 @@ public class ImageGalleryAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     private ViewGroup.LayoutParams getGridItemLayoutParams(View view) {
         ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
-        int screenWidth = ImageGalleryUtils.getScreenWidth(view.getContext());
-        int numOfColumns;
-        if (ImageGalleryUtils.isInLandscapeMode(view.getContext())) {
-            numOfColumns = 4;
-        } else {
-            numOfColumns = 3;
-        }
-
-        gridItemWidth = screenWidth / numOfColumns;
-        gridItemHeight = screenWidth / numOfColumns;
 
         layoutParams.width = gridItemWidth;
-        layoutParams.height = gridItemHeight;
+        layoutParams.height = gridItemWidth;
 
         return layoutParams;
     }

@@ -9,7 +9,7 @@
             android:name="com.etiennelawlor.imagegallery.library.activities.FullScreenImageGalleryActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label=""
-            android:theme="@style/ImageGalleryTheme" />
+            android:theme="@style/Theme.ImageGallery" />
 
     </application>
 

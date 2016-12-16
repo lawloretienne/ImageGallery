@@ -1,20 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/black">
+    android:background="@color/grey_800"
+    android:orientation="vertical">
+
+    <include layout="@layout/default_toolbar" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="?actionBarSize"/>
+        android:layout_height="match_parent"/>
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:minHeight="?actionBarSize"
-        android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
-        android:background="@color/transparent_grey_900_eighty"/>
-
-</FrameLayout>
+</LinearLayout>

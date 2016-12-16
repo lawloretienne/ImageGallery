@@ -17,8 +17,7 @@ import android.widget.ImageView;
 
 import com.etiennelawlor.imagegallery.library.activities.FullScreenImageGalleryActivity;
 import com.etiennelawlor.imagegallery.library.adapters.ImageGalleryAdapter;
-import com.etiennelawlor.imagegallery.library.util.ImageGalleryUtils;
-import com.etiennelawlor.imagegallery.library.view.GridSpacesItemDecoration;
+import com.etiennelawlor.imagegallery.library.utilities.DisplayUtility;
 
 import java.util.ArrayList;
 
@@ -42,7 +41,6 @@ public class ImageGalleryFragment extends Fragment implements ImageGalleryAdapte
     // region Member Variables
     private ArrayList<String> images;
     private String title;
-    private GridSpacesItemDecoration gridSpacesItemDecoration;
     private static ImageGalleryAdapter.ImageThumbnailLoader imageThumbnailLoader;
     // endregion
 
@@ -107,7 +105,6 @@ public class ImageGalleryFragment extends Fragment implements ImageGalleryAdapte
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        recyclerView.removeItemDecoration(gridSpacesItemDecoration);
         setUpRecyclerView();
     }
 
@@ -139,16 +136,17 @@ public class ImageGalleryFragment extends Fragment implements ImageGalleryAdapte
 
     private void setUpRecyclerView() {
         int numOfColumns;
-        if (ImageGalleryUtils.isInLandscapeMode(getActivity())) {
+        if (DisplayUtility.isInLandscapeMode(getActivity())) {
             numOfColumns = 4;
         } else {
             numOfColumns = 3;
         }
 
-        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), numOfColumns));
-        gridSpacesItemDecoration = new GridSpacesItemDecoration(ImageGalleryUtils.dp2px(getActivity(), 2), numOfColumns);
-        recyclerView.addItemDecoration(gridSpacesItemDecoration);
-        ImageGalleryAdapter imageGalleryAdapter = new ImageGalleryAdapter(images);
+        GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), numOfColumns);
+
+        recyclerView.setLayoutManager(layoutManager);
+
+        ImageGalleryAdapter imageGalleryAdapter = new ImageGalleryAdapter(getContext(), images);
         imageGalleryAdapter.setOnImageClickListener(this);
         imageGalleryAdapter.setImageThumbnailLoader(this);
 

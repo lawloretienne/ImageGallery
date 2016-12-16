@@ -4,9 +4,12 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.graphics.Palette;
 import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -82,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements ImageGalleryAdapt
 
     // region ImageGalleryAdapter.ImageThumbnailLoader Methods
     @Override
-    public void loadImageThumbnail(ImageView iv, String imageUrl, int dimension) {
+    public void loadImageThumbnail(final ImageView iv, String imageUrl, int dimension) {
         if (!TextUtils.isEmpty(imageUrl)) {
             Picasso.with(iv.getContext())
                     .load(imageUrl)
@@ -125,10 +128,16 @@ public class MainActivity extends AppCompatActivity implements ImageGalleryAdapt
     // endregion
 
     // region Helper Methods
-    private void applyPalette(Palette palette, LinearLayout bgLinearLayout){
+    private void applyPalette(Palette palette, ViewGroup viewGroup){
         int bgColor = getBackgroundColor(palette);
         if (bgColor != -1)
-            bgLinearLayout.setBackgroundColor(bgColor);
+            viewGroup.setBackgroundColor(bgColor);
+    }
+
+    private void applyPalette(Palette palette, View view){
+        int bgColor = getBackgroundColor(palette);
+        if (bgColor != -1)
+            view.setBackgroundColor(bgColor);
     }
 
     private int getBackgroundColor(Palette palette) {

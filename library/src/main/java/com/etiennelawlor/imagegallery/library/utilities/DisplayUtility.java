@@ -1,23 +1,18 @@
-package com.etiennelawlor.imagegallery.library.util;
+package com.etiennelawlor.imagegallery.library.utilities;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.Point;
-import android.net.Uri;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
 
-import java.util.Set;
-
 /**
  * Created by etiennelawlor on 8/25/15.
  */
-public class ImageGalleryUtils {
+public class DisplayUtility {
 
     public static int getScreenWidth(@NonNull Context context) {
         Point size = new Point();
