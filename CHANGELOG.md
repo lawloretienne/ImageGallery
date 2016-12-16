@@ -1,5 +1,10 @@
 #Change Log
 
+##Version 0.1.0 (2016-12-16)
+* Updated layouts and themes. 
+* Removed ItemDecorator. 
+* Updated Dependencies.
+
 ##Version 0.0.15 (2016-06-10)
 * Added ImageGalleryFragment
 * Fixed ItemDecoration issue on configuration change

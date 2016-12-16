@@ -23,14 +23,14 @@ ImageGalleryActivity           |  FullScreenImageGallery
 
 #### Gradle
 
-`compile 'com.github.lawloretienne:imagegallery:0.0.15'`
+`compile 'com.github.lawloretienne:imagegallery:0.1.0'`
 
 #### Maven
 ```
 <dependency>
     <groupId>com.github.lawloretienne</groupId>
     <artifactId>imagegallery</artifactId>
-    <version>0.0.15</version>
+    <version>0.1.0</version>
 </dependency>
 ```
 
