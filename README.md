@@ -1,4 +1,9 @@
 # ImageGallery [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-ImageGallery-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/2364)
+
+![ImageGallery](https://raw.githubusercontent.com/lawloretienne/ImageGallery/master/images/ic_launcher.png)
+
+## Overview
+
 A gallery used to host an array of images
 
 You can add one or more images to the gallery
@@ -14,6 +19,8 @@ Palette color types
  - DARK_MUTED
 
 Supports pinch-to-zoom on the images
+
+## Screenshots
 
 ImageGalleryActivity           |  FullScreenImageGallery
 :-------------------------:|:-------------------------:
