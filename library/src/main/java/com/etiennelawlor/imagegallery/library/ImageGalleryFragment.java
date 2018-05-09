@@ -4,6 +4,7 @@ package com.etiennelawlor.imagegallery.library;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -31,6 +32,7 @@ public class ImageGalleryFragment extends Fragment implements ImageGalleryAdapte
     public static final String KEY_IMAGES = "KEY_IMAGES";
     public static final String KEY_POSITION = "KEY_POSITION";
     public static final String KEY_TITLE = "KEY_TITLE";
+    public static final String HIDE_TOOLBAR = "HIDE_TOOLBAR";
     // endregion
 
     // region Views
@@ -41,6 +43,7 @@ public class ImageGalleryFragment extends Fragment implements ImageGalleryAdapte
     // region Member Variables
     private ArrayList<String> images;
     private String title;
+    private boolean hideToolbar;
     private static ImageGalleryAdapter.ImageThumbnailLoader imageThumbnailLoader;
     // endregion
 
@@ -72,19 +75,17 @@ public class ImageGalleryFragment extends Fragment implements ImageGalleryAdapte
         if (getArguments() != null) {
             images = getArguments().getStringArrayList(KEY_IMAGES);
             title = getArguments().getString(KEY_TITLE);
+            hideToolbar = getArguments().getBoolean(HIDE_TOOLBAR);
         }
-
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_image_gallery, container, false);
-        return rootView;
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_image_gallery, container, false);
     }
 
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         bindViews();
@@ -92,13 +93,17 @@ public class ImageGalleryFragment extends Fragment implements ImageGalleryAdapte
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
 
         ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+
         if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setTitle(title);
+            if (hideToolbar) {
+                actionBar.hide();
+            } else {
+                actionBar.setDisplayHomeAsUpEnabled(true);
+                actionBar.setTitle(title);
+            }
         }
 
         setUpRecyclerView();
-
     }
     // endregion
 
@@ -130,8 +135,8 @@ public class ImageGalleryFragment extends Fragment implements ImageGalleryAdapte
 
     // region Helper Methods
     private void bindViews() {
-        recyclerView = (RecyclerView) getActivity().findViewById(R.id.rv);
-        toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
+        recyclerView = getActivity().findViewById(R.id.rv);
+        toolbar = getActivity().findViewById(R.id.toolbar);
     }
 
     private void setUpRecyclerView() {

@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.graphics.Palette;
 import android.text.TextUtils;
@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements ImageGalleryAdapt
         Bundle bundle = new Bundle();
         bundle.putStringArrayList(ImageGalleryActivity.KEY_IMAGES, new ArrayList<>(Arrays.asList(images)));
         bundle.putString(ImageGalleryActivity.KEY_TITLE, "Unsplash Images");
+        bundle.putBoolean(ImageGalleryActivity.HIDE_TOOLBAR, true);
         intent.putExtras(bundle);
 
         startActivity(intent);
@@ -60,6 +61,7 @@ public class MainActivity extends AppCompatActivity implements ImageGalleryAdapt
         Bundle bundle = new Bundle();
         bundle.putStringArrayList(ImageGalleryFragment.KEY_IMAGES, new ArrayList<>(Arrays.asList(images)));
         bundle.putString(ImageGalleryActivity.KEY_TITLE, "Unsplash Images");
+        bundle.putBoolean(ImageGalleryActivity.HIDE_TOOLBAR, true);
         intent.putExtras(bundle);
 
         startActivity(intent);
@@ -110,7 +112,7 @@ public class MainActivity extends AppCompatActivity implements ImageGalleryAdapt
                         public void onSuccess() {
                             Bitmap bitmap = ((BitmapDrawable) iv.getDrawable()).getBitmap();
                             Palette.from(bitmap).generate(new Palette.PaletteAsyncListener() {
-                                public void onGenerated(Palette palette) {
+                                public void onGenerated(@NonNull Palette palette) {
                                     applyPalette(palette, bgLinearLayout);
                                 }
                             });
@@ -128,13 +130,13 @@ public class MainActivity extends AppCompatActivity implements ImageGalleryAdapt
     // endregion
 
     // region Helper Methods
-    private void applyPalette(Palette palette, ViewGroup viewGroup){
+    private void applyPalette(Palette palette, ViewGroup viewGroup) {
         int bgColor = getBackgroundColor(palette);
         if (bgColor != -1)
             viewGroup.setBackgroundColor(bgColor);
     }
 
-    private void applyPalette(Palette palette, View view){
+    private void applyPalette(Palette palette, View view) {
         int bgColor = getBackgroundColor(palette);
         if (bgColor != -1)
             view.setBackgroundColor(bgColor);

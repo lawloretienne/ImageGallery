@@ -22,6 +22,7 @@ public class ImageGalleryActivity extends AppCompatActivity implements ImageGall
     // region Constants
     public static final String KEY_IMAGES = "KEY_IMAGES";
     public static final String KEY_TITLE = "KEY_TITLE";
+    public static final String HIDE_TOOLBAR = "HIDE_TOOLBAR";
     // endregion
 
     // region Views
@@ -32,6 +33,7 @@ public class ImageGalleryActivity extends AppCompatActivity implements ImageGall
     // region Member Variables
     private ArrayList<String> images;
     private String title;
+    private boolean hideToolbar;
     private static ImageGalleryAdapter.ImageThumbnailLoader imageThumbnailLoader;
     // endregion
 
@@ -46,6 +48,7 @@ public class ImageGalleryActivity extends AppCompatActivity implements ImageGall
             if (extras != null) {
                 images = extras.getStringArrayList(KEY_IMAGES);
                 title = extras.getString(KEY_TITLE);
+                hideToolbar = extras.getBoolean(HIDE_TOOLBAR);
             }
         }
 
@@ -55,9 +58,14 @@ public class ImageGalleryActivity extends AppCompatActivity implements ImageGall
 
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
+
         if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setTitle(title);
+            if (hideToolbar) {
+                actionBar.hide();
+            } else {
+                actionBar.setDisplayHomeAsUpEnabled(true);
+                actionBar.setTitle(title);
+            }
         }
 
         setUpRecyclerView();
@@ -101,8 +109,8 @@ public class ImageGalleryActivity extends AppCompatActivity implements ImageGall
 
     // region Helper Methods
     private void bindViews() {
-        recyclerView = (RecyclerView) findViewById(R.id.rv);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        recyclerView = findViewById(R.id.rv);
+        toolbar = findViewById(R.id.toolbar);
     }
 
     private void setUpRecyclerView() {
