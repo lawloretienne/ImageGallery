@@ -8,7 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.etiennelawlor.imagegallery.library.R;
@@ -57,13 +59,15 @@ public class ImageGalleryActivity extends AppCompatActivity implements ImageGall
         bindViews();
 
         setSupportActionBar(toolbar);
-        ActionBar actionBar = getSupportActionBar();
+
+        final ActionBar actionBar = getSupportActionBar();
+        final ViewGroup inclusionViewGroup = findViewById(R.id.activityLayout);
 
         if (actionBar != null) {
             if (hideToolbar) {
                 actionBar.hide();
-                System.out.println("Toolbar hidden");
             } else {
+                inclusionViewGroup.addView(LayoutInflater.from(this).inflate(R.layout.default_toolbar, null));
                 actionBar.setDisplayHomeAsUpEnabled(true);
                 actionBar.setTitle(title);
             }

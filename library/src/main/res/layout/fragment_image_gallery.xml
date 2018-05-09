@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragmentLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/grey_800"
     android:orientation="vertical">
-
-    <include layout="@layout/default_toolbar" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv"
