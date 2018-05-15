@@ -93,13 +93,13 @@ public class ImageGalleryFragment extends Fragment implements ImageGalleryAdapte
 
         bindViews();
 
-        final ViewGroup inclusionViewGroup = ((AppCompatActivity) getActivity()).findViewById(R.id.fragmentLayout);
+        //final ViewGroup inclusionViewGroup = ((AppCompatActivity) getActivity()).findViewById(R.id.fragmentLayout);
 
         if (!hideToolbar) {
             ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
             final ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
 
-            inclusionViewGroup.addView(LayoutInflater.from(this.getActivity()).inflate(R.layout.default_toolbar, null));
+            //inclusionViewGroup.addView(LayoutInflater.from(this.getActivity()).inflate(R.layout.default_toolbar, null));
             if (actionBar != null) {
                 actionBar.setDisplayHomeAsUpEnabled(true);
             }
