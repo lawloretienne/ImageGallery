@@ -21,6 +21,7 @@ import com.etiennelawlor.imagegallery.library.adapters.ImageGalleryAdapter;
 import com.etiennelawlor.imagegallery.library.utilities.DisplayUtility;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by etiennelawlor on 6/10/16.
@@ -46,6 +47,8 @@ public class ImageGalleryFragment extends Fragment implements ImageGalleryAdapte
     private boolean hideToolbar;
     private static ImageGalleryAdapter.ImageThumbnailLoader imageThumbnailLoader;
     // endregion
+
+    public ImageGalleryAdapter imageGalleryAdapter;
 
     // region Constructors
     public ImageGalleryFragment() {
@@ -101,7 +104,6 @@ public class ImageGalleryFragment extends Fragment implements ImageGalleryAdapte
             } else {
                 inclusionViewGroup.addView(LayoutInflater.from(this.getActivity()).inflate(R.layout.default_toolbar, null));
                 actionBar.setDisplayHomeAsUpEnabled(true);
-                actionBar.setTitle(title);
             }
         }
 
@@ -153,7 +155,7 @@ public class ImageGalleryFragment extends Fragment implements ImageGalleryAdapte
 
         recyclerView.setLayoutManager(layoutManager);
 
-        ImageGalleryAdapter imageGalleryAdapter = new ImageGalleryAdapter(getContext(), images);
+        imageGalleryAdapter = new ImageGalleryAdapter(getContext(), images);
         imageGalleryAdapter.setOnImageClickListener(this);
         imageGalleryAdapter.setImageThumbnailLoader(this);
 
@@ -164,4 +166,9 @@ public class ImageGalleryFragment extends Fragment implements ImageGalleryAdapte
         imageThumbnailLoader = loader;
     }
     // endregion
+
+    public void addPicture(String... images) {
+        Collections.addAll(this.images, images);
+        imageGalleryAdapter.notifyDataSetChanged();
+    }
 }
