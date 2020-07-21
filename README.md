@@ -1,3 +1,5 @@
+<a href="https://tracking.gitads.io/?repo=ImageGallery"><img src="https://images.gitads.io/ImageGallery" alt="GitAds"/></a>
+
 # ImageGallery [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-ImageGallery-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/2364)
 
 ![ImageGallery](https://raw.githubusercontent.com/lawloretienne/ImageGallery/master/images/ic_launcher.png)
